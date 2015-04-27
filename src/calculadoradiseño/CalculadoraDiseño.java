@@ -12,7 +12,7 @@ package calculadoradiseño;
 public class CalculadoraDiseño {
 
     /**
-     * @param args the command line arguments
+     * @param args the command line argumentsnjknjnkhnknjhnkh
      */
     public static void main(String[] args) {
         // TODO code application logic here
