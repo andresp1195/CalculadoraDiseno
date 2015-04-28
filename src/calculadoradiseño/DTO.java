@@ -14,12 +14,12 @@ import java.util.List;
  */
 public class DTO {
     public List<Integer> lista; 
-    String operacion; 
-    int resultado; 
-    boolean error; 
-    String mensaje_error; 
+    public String operacion; 
+    public String resultado; 
+    public boolean error; 
+    public String mensaje_error; 
     
-    public DTO(List<Integer> lista, String operacion, int resultado, boolean error, String mensaje_error){
+    public DTO(List<Integer> lista, String operacion, String resultado, boolean error, String mensaje_error){
         this.lista=lista; 
         this.operacion=operacion; 
         this.resultado=resultado; 
