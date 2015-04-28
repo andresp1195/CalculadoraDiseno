@@ -6,11 +6,14 @@
 package VistaModoCaracter;
 
 import calculadoradiseño.*; 
+import Controlador.*; 
 
 
 import java.util.Arrays; 
 import java.util.Scanner; 
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 /**
  *
  * @author Mauricio Gamboa
@@ -44,9 +47,15 @@ public class ModoCaracter {
         numero1 = buffer.nextInt();
         System.out.println("2. Ingrese otro numero:"); 
         numero2 = buffer.nextInt(); 
-       
-        //DTO enviar= new DTO(); 
         
+        List <Integer> lista = new LinkedList(); 
+        lista.add(numero1); 
+        lista.add(numero2); 
+       
+        DTO enviar= new DTO(lista,"suma","0",false,""); 
+        //Aquí debe ser a la interfaz
+        Controlador peticion = new Controlador(enviar); 
+        String resultado= peticion.MiDTO.resultado;  
         
     } 
     if (operacion == 2) { 
