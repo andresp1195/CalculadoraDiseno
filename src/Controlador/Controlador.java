@@ -4,11 +4,20 @@
  * and open the template in the editor.
  */
 package Controlador;
+import calculadoradiseño.*; 
 
 /**
  *
  * @author Mauricio Gamboa
  */
 public class Controlador {
+    public DTO MiDTO; 
+    
+    public Controlador(DTO MiDTO){
+        this.MiDTO=MiDTO; 
+        
+    }
+    
+    
     
 }
