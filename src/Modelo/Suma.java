@@ -12,10 +12,7 @@ import java.util.List;
  * @author Mauricio Gamboa
  */
 public class Suma extends Operacion {
-
-    public static String forName(String suma) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
     int sumaTotal;
     int elementoActualDeLaLista;
     public Suma(){
