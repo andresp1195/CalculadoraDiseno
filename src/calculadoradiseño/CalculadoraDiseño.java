@@ -35,7 +35,7 @@ public class CalculadoraDiseño {
         Class cl = Class.forName("Modelo.Suma");
         Object o = cl.newInstance();
         System.out.println("Clase de o: "+o.getClass().getName());
-        //System.out.println("forName()"+Suma.forName("Suma"));  
+        //System.out.println("forName()"+Suma.forName("Suma"));   nn  
 
     }
     
