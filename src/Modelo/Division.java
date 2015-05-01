@@ -13,18 +13,19 @@ import java.util.List;
  */
 public class Division extends Creador{
     int elementoActualDeLaLista;
-    int cociente;
+    float cociente;
     public Division(){
-        CreadorDeLaDivision(operandos.lista);
+        //CreadorDeLaDivision(operandos.lista);
     }
     public void CreadorDeLaDivision(List <Integer> listaDeOperandos){
-        int tamano = listaDeOperandos.size();
-        for (int i=0;i<tamano;i++){
-            elementoActualDeLaLista = listaDeOperandos.get(i);
-            cociente = 
-            
+        int tamano = listaDeOperandos.size(); 
+        cociente = (float)listaDeOperandos.get(0);
+        for (int i=1;i<tamano;i++){
+            elementoActualDeLaLista = listaDeOperandos.get(i); 
+            cociente = CocienteResultado(cociente,elementoActualDeLaLista);
         }
-    
+    System.out.println(cociente);}
+    public float CocienteResultado(float dividendo,int divisor){
+        return (dividendo/divisor);
     }
-    
 }

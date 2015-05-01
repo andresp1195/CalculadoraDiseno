@@ -11,6 +11,6 @@ import calculadoradiseño.DTO;
  *
  * @author Andres
  */
-public class Operacion {
+public abstract class Operacion {
     public DTO operandos;            
     }

@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Andres
  */
-public abstract class Creador extends Operacion{
+public class Creador extends Operacion{
     
     public Creador(){}
     

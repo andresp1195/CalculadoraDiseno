@@ -19,10 +19,11 @@ public class Resta extends Creador{
     }
     public void CreadorDeLaResta (List<Integer> listaDeOperandos){
         int tamano = listaDeOperandos.size();
-        for (int i=0;i<tamano;i++){
+        restaTotal=listaDeOperandos.get(0);
+        for (int i=1;i<tamano;i++){            
             elementoActualDeLaLista = listaDeOperandos.get(i);
             restaTotal= ResultadoDeLaResta(restaTotal,elementoActualDeLaLista);}
-    }
+    System.out.println(restaTotal);}
         
     public int ResultadoDeLaResta (int minuendo, int sustraendo){
         return (minuendo-sustraendo);
