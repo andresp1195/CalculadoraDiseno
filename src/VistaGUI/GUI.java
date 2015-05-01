@@ -19,6 +19,7 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -37,7 +38,8 @@ public class GUI extends javax.swing.JFrame {
         MenuAyuda = new javax.swing.JMenu();
         MenuCreditos = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Calculadora");
         setBackground(new java.awt.Color(255, 153, 51));
         setForeground(new java.awt.Color(255, 153, 51));
 
@@ -52,7 +54,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        MenuAyuda.setText("Ayua");
+        MenuAyuda.setText("Ayuda");
         BarraDeMenu.add(MenuAyuda);
 
         MenuCreditos.setText("Créditos");
@@ -96,7 +98,10 @@ public class GUI extends javax.swing.JFrame {
             String operacion = ComboBoxOperacion.getSelectedItem().toString();
             this.setVisible(false);
             switch (operacion){
-                case "Suma":
+                
+                //OPERACIONES
+                
+                case "Sumar":
                     OperacionGUI OpSumar = new OperacionGUI("Suma","Sumar Números");
                     OpSumar.setVisible(true);
                     break;
@@ -119,6 +124,21 @@ public class GUI extends javax.swing.JFrame {
                 case "Raíz Cuadrada":
                     OperacionGUI OpRadicar = new OperacionGUI("Radicacion","Raíz cuadrada de un número");
                     OpRadicar.setVisible(true);
+                    break;
+                    
+                //CONVERSIONES
+                    
+                case "Convertir a Octal":
+                    ConversionGUI COctal = new ConversionGUI("Coctal","Convertir Decimal a Octal");
+                    COctal.setVisible(true);
+                    break;
+                case "Convertir a Binario":
+                    ConversionGUI CBinario = new ConversionGUI("Cbinario","Convertir Decimal a Binario");
+                    CBinario.setVisible(true);
+                    break;
+                case "Convertir a Hexadecimal":
+                    ConversionGUI CHexadecimal = new ConversionGUI("Chexadecimal","Convertir Decimal a Hexadecimal");
+                    CHexadecimal.setVisible(true);
                     break;
             }
         }
@@ -150,7 +170,8 @@ public class GUI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        //</editor-fold>
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

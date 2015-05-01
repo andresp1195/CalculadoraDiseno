@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package VistaGUI;
-import calculadoradiseño.DTO;
+import VistaGUI.GUI;
+//import calculadoradiseño.DTO;
+import java.awt.event.WindowEvent;
 import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -22,7 +24,14 @@ public class OperacionGUI extends javax.swing.JFrame {
         initComponents();
         this.operacion = NombreOperacion;
         this.setTitle(TituloDeVentana);
-        this.LabelOperacionSeleccionada.setText(NombreOperacion);
+        this.LabelOperacion.setText(NombreOperacion);
+        if (NombreOperacion.equals("Radicacion")){
+            this.FieldOperando2.setVisible(false);
+            this.LabelOperando2.setVisible(false);
+        }
+        this.setLocationRelativeTo(null);
+        this.getRootPane().setDefaultButton(BotonCalcular);
+        FieldOperando1.requestFocusInWindow();
     }
     
     /**
@@ -43,8 +52,9 @@ public class OperacionGUI extends javax.swing.JFrame {
         LabelOperando2 = new javax.swing.JLabel();
         LabelResultado = new javax.swing.JLabel();
         LabelResultadoInt = new javax.swing.JLabel();
+        BotonAtras = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         BotonCalcular.setText("Calcular");
         BotonCalcular.addActionListener(new java.awt.event.ActionListener() {
@@ -63,6 +73,13 @@ public class OperacionGUI extends javax.swing.JFrame {
 
         LabelResultado.setText("Resultado: ");
 
+        BotonAtras.setText("Atrás");
+        BotonAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonAtrasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,7 +87,9 @@ public class OperacionGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
+                        .addContainerGap()
+                        .addComponent(BotonAtras)
+                        .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,13 +111,15 @@ public class OperacionGUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(LabelResultadoInt, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(BotonCalcular))))
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(LabelOperacionSeleccionada)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LabelOperacionSeleccionada)
+                    .addComponent(BotonAtras))
                 .addGap(18, 18, 18)
                 .addComponent(LabelOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
@@ -131,7 +152,8 @@ public class OperacionGUI extends javax.swing.JFrame {
                 List <Integer> lista = new LinkedList();
                 lista.add(op1);
                 lista.add(op2);
-                DTO enviar = new DTO(lista,this.operacion,"",false,"");
+                //DTO enviar = new DTO(lista,this.operacion,"",false,"");
+                JOptionPane.showMessageDialog(new JFrame(), "Crear DTO: DTO(lista,"+this.operacion+",--,false,--","Información",JOptionPane.INFORMATION_MESSAGE);
                 //enviarlo al controlador
                 //LabelResultadoInt.setText(/*Respuesta del DTO enviado como respuesta por el controlador*/);
             }
@@ -143,6 +165,12 @@ public class OperacionGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(new JFrame(),"Debe ingresar los datos requeridos (Operandos) para continuar.\nLos datos deben ser números enteros positivos.","Error",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_BotonCalcularActionPerformed
+
+    private void BotonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAtrasActionPerformed
+        GUI gui = new GUI();
+        this.setVisible(false);
+        gui.setVisible(true);
+    }//GEN-LAST:event_BotonAtrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,10 +204,18 @@ public class OperacionGUI extends javax.swing.JFrame {
             public void run() {
                 new OperacionGUI().setVisible(true);
             }
+        //</editor-fold>
+
+        /* Create and display the form */
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new OperacionGUI().setVisible(true);
+            }
         });*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonAtras;
     private javax.swing.JButton BotonCalcular;
     private javax.swing.JTextField FieldOperando1;
     private javax.swing.JTextField FieldOperando2;
