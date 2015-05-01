@@ -17,6 +17,6 @@ public abstract class Creador extends Operacion{
     
     public void AsignarOperacion(String operacionSeleccionada) throws ClassNotFoundException{
     Class ClaseAsignada = Class.forName(operandos.operacion);
-    
+    //Metodo que prueba Reflection.
     }
 }
