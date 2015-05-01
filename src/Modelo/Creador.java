@@ -8,7 +8,7 @@ package Modelo;
 import java.util.List;
 
 /**
- *ljilj
+ *
  * @author Andres
  */
 public abstract class Creador extends Operacion{
