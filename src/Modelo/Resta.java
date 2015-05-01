@@ -5,10 +5,28 @@
  */
 package Modelo;
 
+import java.util.List;
+
 /**
  *
  * @author Mauricio Gamboa
  */
-public class Resta {
+public class Resta extends Creador{
+    int restaTotal;
+    int elementoActualDeLaLista;
+    public Resta(){
+        CreadorDeLaResta(operandos.lista);
+    }
+    public void CreadorDeLaResta (List<Integer> listaDeOperandos){
+        int tamano = listaDeOperandos.size();
+        for (int i=0;i<tamano;i++){
+            elementoActualDeLaLista = listaDeOperandos.get(i);
+            restaTotal= ResultadoDeLaResta(restaTotal,elementoActualDeLaLista);}
+    }
+        
+    public int ResultadoDeLaResta (int minuendo, int sustraendo){
+        return (minuendo+sustraendo);
+    } 
     
+ 
 }

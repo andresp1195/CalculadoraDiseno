@@ -5,12 +5,18 @@
  */
 package Modelo;
 
+import java.util.List;
+
 /**
  *
  * @author Andres
  */
-public class Creador {
+public abstract class Creador extends Operacion{
+    
     public Creador(){}
     
+    public void AsignarOperacion(String operacionSeleccionada) throws ClassNotFoundException{
+    Class ClaseAsignada = Class.forName(operandos.operacion);
     
+    }
 }

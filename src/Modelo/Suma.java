@@ -5,23 +5,23 @@
  */
 package Modelo;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
  *
  * @author Mauricio Gamboa
  */
-public class Suma extends Operacion {
-    
+public class Suma extends Creador {    
     int sumaTotal;
     int elementoActualDeLaLista;
-    public Suma(){
-     
+    public Suma(){              
+        CreadorDeLaSuma(operandos.lista);
     }
-    public void CreadorDeLaSuma(List<Integer> lista){
-        int tamano = lista.size();
+    public void CreadorDeLaSuma(List<Integer> listaDeOperandos){
+        int tamano = listaDeOperandos.size();
         for (int i=0;i<tamano;i++){
-            elementoActualDeLaLista = lista.get(i);
+            elementoActualDeLaLista = listaDeOperandos.get(i);
             sumaTotal= ResultadoDeLaSuma(sumaTotal,elementoActualDeLaLista);
         }
     System.out.println(sumaTotal);

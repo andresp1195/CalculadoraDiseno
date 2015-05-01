@@ -29,12 +29,22 @@ public class CalculadoraDiseño {
         operandos.add(3);
         Suma suma = new Suma();
         //suma.ObtenerValoresDeLaSuma(operandos);
-        Class<?> c = suma.getClass();
-        System.out.println("getClass()"+c);
-        System.out.println("getName()"+c.getName());  
-        Class cl = Class.forName("Modelo.Suma");
-        Object o = cl.newInstance();
-        System.out.println("Clase de o: "+o.getClass().getName());
+        //Class<?> c = suma.getClass();
+//        System.out.println("getClass()"+c);
+//        System.out.println("getName()"+c.getName());  
+        Class cl= Class.forName("Modelo.Suma");
+        //Object a = cl.newInstance();
+        
+        //System.out.println(a);
+        //Object a = (Object)cl.newInstance();        
+        //Suma a = (Suma)cl.newInstance();
+        //a.CreadorDeLaSuma(operandos);
+        
+        
+        
+//        Object o = cl.newInstance();
+//        System.out.println();        
+        //int resultado = c1.CreadorDeLaSuma(operandos);
         //System.out.println("forName()"+Suma.forName("Suma"));   nn  
 
     }
