@@ -21,6 +21,7 @@ public class Division extends Creador{
         int tamano = listaDeOperandos.size();
         for (int i=0;i<tamano;i++){
             elementoActualDeLaLista = listaDeOperandos.get(i);
+            cociente = 
             
         }
     
