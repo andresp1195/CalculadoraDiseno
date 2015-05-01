@@ -25,8 +25,8 @@ public class Resta extends Creador{
     }
         
     public int ResultadoDeLaResta (int minuendo, int sustraendo){
-        return (minuendo+sustraendo);
-    } //Devuelve el resultado de la resta.
+        return (minuendo-sustraendo);
+    } 
     
  
 }

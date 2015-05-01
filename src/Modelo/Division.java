@@ -5,10 +5,25 @@
  */
 package Modelo;
 
+import java.util.List;
+
 /**
  *
  * @author Mauricio Gamboa
  */
-public class Division {
+public class Division extends Creador{
+    int elementoActualDeLaLista;
+    int cociente;
+    public Division(){
+        CreadorDeLaDivision(operandos.lista);
+    }
+    public void CreadorDeLaDivision(List <Integer> listaDeOperandos){
+        int tamano = listaDeOperandos.size();
+        for (int i=0;i<tamano;i++){
+            elementoActualDeLaLista = listaDeOperandos.get(i);
+            
+        }
+    
+    }
     
 }

@@ -23,8 +23,7 @@ public class Suma extends Creador {
         for (int i=0;i<tamano;i++){
             elementoActualDeLaLista = listaDeOperandos.get(i);
             sumaTotal= ResultadoDeLaSuma(sumaTotal,elementoActualDeLaLista);
-        }
-    System.out.println(sumaTotal);
+        }    
     }
     public int ResultadoDeLaSuma (int sumando1, int sumando2){
         return (sumando1+sumando2);
