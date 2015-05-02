@@ -5,6 +5,7 @@
  */
 package Controlador;
 import calculadoradiseño.*; 
+import Modelo.*; 
 
 /**
  *
@@ -18,6 +19,8 @@ public class Controlador {
         
     }
     
-    
-    
+    public void enviar_solicitud() throws ClassNotFoundException{
+        Creador m = new Creador(); 
+        m.AsignarOperacion(MiDTO);
+    }
 }
