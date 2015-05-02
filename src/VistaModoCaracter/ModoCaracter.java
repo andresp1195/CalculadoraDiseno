@@ -32,15 +32,15 @@ public class ModoCaracter {
     
     public void cargar_operaciones(List<OperacionesSistema> listaos){
         this.lista=listaos; 
-        OperacionesSistema operacion1 = new OperacionesSistema("suma",1);
-        OperacionesSistema operacion2 = new OperacionesSistema("resta",2); 
-        OperacionesSistema operacion3 = new OperacionesSistema("multiplicacion",3); 
-        OperacionesSistema operacion4 = new OperacionesSistema("division",4); 
-        OperacionesSistema operacion5 = new OperacionesSistema("potenciacion",5);
-        OperacionesSistema operacion6 = new OperacionesSistema("radicacion",6); 
-        OperacionesSistema operacion7 = new OperacionesSistema("binario",7); 
-        OperacionesSistema operacion8 = new OperacionesSistema("hexadecimal",8); 
-        OperacionesSistema operacion9 = new OperacionesSistema("octal",9);
+        OperacionesSistema operacion1 = new OperacionesSistema("Suma",1);
+        OperacionesSistema operacion2 = new OperacionesSistema("Resta",2); 
+        OperacionesSistema operacion3 = new OperacionesSistema("Multiplicacion",3); 
+        OperacionesSistema operacion4 = new OperacionesSistema("Division",4); 
+        OperacionesSistema operacion5 = new OperacionesSistema("Potencia",5);
+        OperacionesSistema operacion6 = new OperacionesSistema("Radicacion",6); 
+        OperacionesSistema operacion7 = new OperacionesSistema("Cbinario",7); 
+        OperacionesSistema operacion8 = new OperacionesSistema("Chexadecimal",8); 
+        OperacionesSistema operacion9 = new OperacionesSistema("Coctal",9);
         lista.add(operacion1); 
         lista.add(operacion2);
         lista.add(operacion3);
@@ -105,7 +105,7 @@ public class ModoCaracter {
         
     }
     
-    public void operar(){ 
+    public void operar() throws ClassNotFoundException{ 
     cargar_operaciones(lista); 
     do {
     do { 
@@ -124,7 +124,8 @@ public class ModoCaracter {
     else { 
         System.out.println("Operacion a realizar: "+operacion.Nombre);
         DTO enviar= new DTO((solicitar_numeros(1)),operacion.Nombre,"0",false,""); 
-        Controlador peticion = new Controlador(enviar); 
+        Controlador peticion = new Controlador(enviar);
+        peticion.enviar_solicitud();
         String resultado= peticion.MiDTO.resultado;
     } 
     
