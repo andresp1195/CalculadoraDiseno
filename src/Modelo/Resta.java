@@ -5,23 +5,27 @@
  */
 package Modelo;
 
+import calculadoradiseño.DTO;
 import java.util.List;
 
 /**
  *
  * @author Mauricio Gamboa
  */
-public class Resta extends Creador{
+public class Resta implements IOperacion{
     int restaTotal;
     int elementoActualDeLaLista;
-    public Resta(){
-        CreadorDeLaResta(operandos.lista);
+    public DTO MiDTO;
+    public Resta(DTO dtos){
+        this.MiDTO = dtos;
+        Creador(MiDTO);
     }
-    public void CreadorDeLaResta (List<Integer> listaDeOperandos){
-        int tamano = listaDeOperandos.size();
-        restaTotal=listaDeOperandos.get(0);
+    @Override
+    public void Creador (DTO listaDeOperandos){
+        int tamano = listaDeOperandos.lista.size();
+        restaTotal=listaDeOperandos.lista.get(0);
         for (int i=1;i<tamano;i++){            
-            elementoActualDeLaLista = listaDeOperandos.get(i);
+            elementoActualDeLaLista = listaDeOperandos.lista.get(i);
             restaTotal= ResultadoDeLaResta(restaTotal,elementoActualDeLaLista);}
     System.out.println(restaTotal);}
         

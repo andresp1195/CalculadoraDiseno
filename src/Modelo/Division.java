@@ -11,13 +11,14 @@ import java.util.List;
  *
  * @author Mauricio Gamboa
  */
-public class Division extends Creador{
+public class Division implements IOperacion{
     int elementoActualDeLaLista;
     float cociente;
     public Division(){
-        //CreadorDeLaDivision(operandos.lista);
+        //Creador(MiDTO.lista);
     }
-    public void CreadorDeLaDivision(List <Integer> listaDeOperandos){
+    @Override
+    public void Creador(List <Integer> listaDeOperandos){
         int tamano = listaDeOperandos.size(); 
         cociente = (float)listaDeOperandos.get(0);
         for (int i=1;i<tamano;i++){

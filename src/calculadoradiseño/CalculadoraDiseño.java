@@ -23,23 +23,23 @@ public class CalculadoraDiseño {
      */
     public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         // TODO code application logic here
-        //ModoCaracter mc= new ModoCaracter();
-        //mc.operar(); 
+        ModoCaracter mc= new ModoCaracter();
+        mc.operar(); 
          // TODO code application logic here
-        List<Integer> operandos = new LinkedList();
-        operandos.add(2);
-        operandos.add(2);
-        operandos.add(1);
-        operandos.add(2);
-        Division pot = new Division();
-        pot.CreadorDeLaDivision(operandos);
-       
+//        List<Integer> operandos = new LinkedList();
+//        operandos.add(2);
+//        operandos.add(2);
+//        operandos.add(1);
+//        operandos.add(2);
+//        Division pot = new Division();
+//        pot.CreadorDeLaDivision(operandos);
+//       
 //        Resta resta = new Resta();
 //        resta.CreadorDeLaResta(operandos);
         //Class<?> c = suma.getClass();
 //        System.out.println("getClass()"+c);
 //        System.out.println("getName()"+c.getName());  
-        Class cl= Class.forName("Modelo.Suma");
+//        Class cl= Class.forName("Modelo.Suma");
         //Object a = cl.newInstance();
   
         

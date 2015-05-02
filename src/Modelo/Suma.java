@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import calculadoradiseño.DTO;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,22 +13,27 @@ import java.util.List;
  *
  * @author Mauricio Gamboa
  */
-public class Suma extends Creador {    
+public class Suma implements IOperacion {    
     int sumaTotal;
-    int elementoActualDeLaLista;
-    public Suma(){              
-        CreadorDeLaSuma(operandos.lista);
+    int elementoActualDeLaLista; 
+    public DTO MiDTO;
+    public Suma(DTO dtos){ 
+        this.MiDTO = dtos;
+        Creador(MiDTO);
     }
-    public void CreadorDeLaSuma(List<Integer> listaDeOperandos){
-        int tamano = listaDeOperandos.size();
-        for (int i=0;i<tamano;i++){
-            elementoActualDeLaLista = listaDeOperandos.get(i);
-            sumaTotal= ResultadoDeLaSuma(sumaTotal,elementoActualDeLaLista);
-        }    
+    @Override
+    public void Creador(DTO listaDeOperandos){
+        int tamano = listaDeOperandos.lista.size();        
+        sumaTotal = listaDeOperandos.lista.get(0);
+        for (int i=1;i<tamano;i++){           
+            elementoActualDeLaLista = listaDeOperandos.lista.get(i);
+            sumaTotal = ResultadoDeLaSuma(sumaTotal,elementoActualDeLaLista);
+        }    System.out.println(sumaTotal);
     }
-    public int ResultadoDeLaSuma (int sumando1, int sumando2){
-        return (sumando1+sumando2);
-        
+    public int ResultadoDeLaSuma (int sumando1, int sumando2){        
+        return (sumando1+sumando2);        
         }
+
+    
     }
 

@@ -6,6 +6,7 @@
 package Controlador;
 import calculadoradiseño.*; 
 import Modelo.*; 
+import java.lang.reflect.InvocationTargetException;
 
 /**
  *
@@ -14,13 +15,27 @@ import Modelo.*;
 public class Controlador {
     public DTO MiDTO; 
     
-    public Controlador(DTO MiDTO){
-        this.MiDTO=MiDTO; 
+    public Controlador(DTO MiDTO) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{
+        this.MiDTO=MiDTO;         
+        enviar_solicitud(MiDTO);
         
     }
     
-    public void enviar_solicitud() throws ClassNotFoundException{
-        Creador m = new Creador(); 
-        m.AsignarOperacion(MiDTO);
+    public static IOperacion enviar_solicitud(DTO MiDTO) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{
+        //Creador m = new Creador(); 
+        //System.out.println("Entro a enviar_solicitud.");
+        IOperacion operacion1 = Creador.AsignarOperacion(MiDTO);
+        //m.AsignarOperacion(MiDTO);
+        //operacion1.Creador(MiDTO);
+        return null;
+        
+        
     }
+    
+//    public void main(String[] args){
+//        Creador m = new Creador();
+//        IOperacion operacion1 = Creador.AsignarOperacion(MiDTO);
+//        operacion1.Creador(MiDTO);
+//        
+//    }
 }

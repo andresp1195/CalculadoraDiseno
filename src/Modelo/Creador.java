@@ -5,18 +5,31 @@
  */
 package Modelo;
 
+import Controlador.Controlador;
+import calculadoradiseño.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 
 /**
  *
  * @author Andres
  */
-public class Creador extends Operacion{
+public class Creador { //ShapeFactory
+    public DTO MiDTO;
+    public Creador(DTO MiDTO){
+        this.MiDTO=MiDTO;
+    }
     
-    public Creador(){}
-    
-    public void AsignarOperacion(String operacionSeleccionada) throws ClassNotFoundException{
-    Class ClaseAsignada = Class.forName(operandos.operacion);
+    public static IOperacion AsignarOperacion(DTO operacionSeleccionada) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{
+        Class ClaseAsignada = Class.forName("Modelo."+operacionSeleccionada.operacion);          
+        Method MetodoDeseado = ClaseAsignada.getMethod("Creador",new Class[]{DTO.class});
+        Object InstanciaAsignada = ClaseAsignada.getConstructor(new Class[]{DTO.class}).newInstance(new Object[] {operacionSeleccionada});
+        //MetodoDeseado.invoke(InstanciaAsignada,operacionSeleccionada);
     //Metodo que prueba Reflection.
+        
+        //Object result = Creador.invoke(operacionSeleccionada.operacion,operacionSeleccionada);
+        //return new Suma(operacionSeleccionada);
+        return null;
     }
 }

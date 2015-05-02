@@ -10,13 +10,14 @@ import java.util.List;
  *
  * @author Mauricio Gamboa
  */
-public class Multiplicacion extends Creador{
+public class Multiplicacion implements IOperacion{
     int elementoActualDeLaLista;
     int producto=1;
     public Multiplicacion(){
-        CreadorDeLaMultiplicacion(operandos.lista);
+        //Creador(operandos.lista);
     }
-    public void CreadorDeLaMultiplicacion(List<Integer> listaDeOperandos){
+    @Override
+    public void Creador(List<Integer> listaDeOperandos){
         int tamano = listaDeOperandos.size();
         for (int i=0;i<tamano;i++){
             elementoActualDeLaLista = listaDeOperandos.get(i);

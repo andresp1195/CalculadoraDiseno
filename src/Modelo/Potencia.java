@@ -14,15 +14,15 @@ import Modelo.Multiplicacion;
  *
  * @author Mauricio Gamboa
  */
-public class Potencia extends Creador {
+public class Potencia implements IOperacion {
     int elementoActualDeLaLista;
     double potenciaTotal;
     int potenciaAcumulada;
     public Potencia(){
-        
-        CreadorDeLaPotencia(operandos.lista);
+        //Creador(operandos.lista);
     }
-    public void CreadorDeLaPotencia(List<Integer> listaDeOperandos){
+    @Override
+    public void Creador(List<Integer> listaDeOperandos){
         Multiplicacion multiplicarExponentes = new Multiplicacion();
         int exponente = 1;
         int base = listaDeOperandos.get(0); 
