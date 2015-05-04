@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package VistaGUI;
-import VistaGUI.GUI;
+import VistaGUI.VentanaPrincipalGUI;
+import calculadoradiseño.DTO;
 //import calculadoradiseño.DTO;
 import java.awt.event.WindowEvent;
 import java.util.LinkedList;
@@ -149,11 +150,11 @@ public class OperacionGUI extends javax.swing.JFrame {
             int op2 = Integer.parseInt(FieldOperando2.getText());
             if ((op1>0) && (op2>0)){
                 //crear el DTO que contenga la información de petición al controlador
-                List <Integer> lista = new LinkedList();
-                lista.add(op1);
-                lista.add(op2);
-                //DTO enviar = new DTO(lista,this.operacion,"",false,"");
-                JOptionPane.showMessageDialog(new JFrame(), "Crear DTO: DTO(lista,"+this.operacion+",--,false,--","Información",JOptionPane.INFORMATION_MESSAGE);
+                List <Integer> listaOperandos = new LinkedList();
+                listaOperandos.add(op1);
+                listaOperandos.add(op2);
+                DTO enviar = new DTO(listaOperandos,this.operacion,"",false,"");
+                //JOptionPane.showMessageDialog(new JFrame(), "Crear DTO: DTO(lista,"+this.operacion+",--,false,--","Información",JOptionPane.INFORMATION_MESSAGE);
                 //enviarlo al controlador
                 //LabelResultadoInt.setText(/*Respuesta del DTO enviado como respuesta por el controlador*/);
             }
@@ -167,7 +168,7 @@ public class OperacionGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonCalcularActionPerformed
 
     private void BotonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAtrasActionPerformed
-        GUI gui = new GUI();
+        VentanaPrincipalGUI gui = new VentanaPrincipalGUI();
         this.setVisible(false);
         gui.setVisible(true);
     }//GEN-LAST:event_BotonAtrasActionPerformed

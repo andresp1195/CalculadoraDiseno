@@ -5,6 +5,7 @@
  */
 package VistaGUI;
 
+import calculadoradiseño.DTO;
 import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JFrame;
@@ -130,10 +131,10 @@ public class ConversionGUI extends javax.swing.JFrame {
             int decimalAConvertir = Integer.parseInt(FieldDecimal.getText());
             if (decimalAConvertir > 0){
                 //crear el DTO que contenga la información de petición al controlador
-                List <Integer> lista = new LinkedList();
-                lista.add(decimalAConvertir);
-                //DTO enviar = new DTO(lista,this.operacion,"",false,"");
-                JOptionPane.showMessageDialog(new JFrame(), "Crear DTO: DTO(lista,"+this.conversion+",--,false,--","Información",JOptionPane.INFORMATION_MESSAGE);
+                List <Integer> listaOperandos = new LinkedList();
+                listaOperandos.add(decimalAConvertir);
+                DTO enviar = new DTO(listaOperandos,this.conversion,"",false,"");
+                //JOptionPane.showMessageDialog(new JFrame(), "Crear DTO: DTO(lista,"+this.conversion+",--,false,--","Información",JOptionPane.INFORMATION_MESSAGE);
                 //enviarlo al controlador
                 //LabelResultadoInt.setText(/*Respuesta del DTO enviado como respuesta por el controlador*/);
             }
@@ -151,7 +152,7 @@ public class ConversionGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_FieldDecimalActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        GUI gui = new GUI();
+        VentanaPrincipalGUI gui = new VentanaPrincipalGUI();
         this.setVisible(false);
         gui.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
