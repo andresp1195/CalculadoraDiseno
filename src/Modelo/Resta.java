@@ -19,20 +19,8 @@ public class Resta implements IOperacion {
     //public DTO MiDTO;
     public int minuendo;
     public int sustraendo;
-    public Resta(){
-        //this.minuendo = minuendo;
-        //this.sustraendo = sustraendo;
-        //Calcular(minuendo,sustraendo);
-    }
-    
-//    public void Creador (DTO listaDeOperandos){
-//        int tamano = listaDeOperandos.lista.size();
-//        restaTotal=listaDeOperandos.lista.get(0);
-//        for (int i=1;i<tamano;i++){            
-//            elementoActualDeLaLista = listaDeOperandos.lista.get(i);
-//            restaTotal= ResultadoDeLaResta(restaTotal,elementoActualDeLaLista);}
-//    System.out.println(restaTotal);}
-    
+//    public Resta(){   
+//    }   
     @Override    
     public String Calcular (int minuendo, int sustraendo){
         int resultado = (minuendo-sustraendo);
