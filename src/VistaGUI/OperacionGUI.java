@@ -33,6 +33,8 @@ public class OperacionGUI extends javax.swing.JFrame implements IVistaControlado
         this.LabelOperacion.setText(NombreOperacion);
         if (NombreOperacion.equals("Radicacion")){
             this.FieldOperando2.setVisible(false);
+            //Indice de radicacion x defecto
+            this.FieldOperando2.setText("2");
             this.LabelOperando2.setVisible(false);
         }
         this.setLocationRelativeTo(null);
@@ -154,7 +156,10 @@ public class OperacionGUI extends javax.swing.JFrame implements IVistaControlado
         try{
             int op1 = Integer.parseInt(FieldOperando1.getText());
             int op2 = Integer.parseInt(FieldOperando2.getText());
-            if ((op1>0) && (op2>0)){
+            if ((op2==0)&&(this.operacion.equals("Division"))){
+                JOptionPane.showMessageDialog(new JFrame(),"No puede dividir entre cero.","Error",JOptionPane.ERROR_MESSAGE);
+            }
+            else if ((op1>=0) && (op2>=0)){
                 //crear el DTO que contenga la información de petición al controlador
                 List <Integer> listaOperandos = new LinkedList();
                 listaOperandos.add(op1);
