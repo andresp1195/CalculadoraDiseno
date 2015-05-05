@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package VistaModoCaracter;
 
 import calculadoradiseño.*; 
 import calculadoradiseño.DTO;
 import Controlador.*; 
 import VistaModoCaracter.*; 
+import calculadoradiseño.IVistaControlador;
 
 
 import java.util.Arrays; 
@@ -17,58 +13,53 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Mauricio Gamboa
  */
-public class ModoCaracter {
+public class ModoCaracter implements IVistaControlador {
     OperacionesSistema operacion; 
-    int decision; //Decision de Salida 
+    int decision; //Decision de Salida del sistema.  
     Scanner buffer = new Scanner(System.in); 
     public List<OperacionesSistema> lista = new LinkedList <OperacionesSistema>(); 
-    //public Operaciones op; 
-    
-    
-  
     
     public void cargar_operaciones(List<OperacionesSistema> listaos){
         this.lista=listaos; 
-        OperacionesSistema operacion1 = new OperacionesSistema("Suma",1);
-        OperacionesSistema operacion2 = new OperacionesSistema("Resta",2); 
-        OperacionesSistema operacion3 = new OperacionesSistema("Multiplicacion",3); 
-        OperacionesSistema operacion4 = new OperacionesSistema("Division",4); 
-        OperacionesSistema operacion5 = new OperacionesSistema("Potencia",5);
-        OperacionesSistema operacion6 = new OperacionesSistema("Radicacion",6); 
-        OperacionesSistema operacion7 = new OperacionesSistema("Cbinario",7); 
-        OperacionesSistema operacion8 = new OperacionesSistema("Chexadecimal",8); 
-        OperacionesSistema operacion9 = new OperacionesSistema("Coctal",9);
-        lista.add(operacion1); 
+         
+        OperacionesSistema operacion1 = new OperacionesSistema("Suma",lista.size()+1,"operacion");
+        lista.add(operacion1);
+        OperacionesSistema operacion2 = new OperacionesSistema("Resta",lista.size()+1,"operacion");
         lista.add(operacion2);
+        OperacionesSistema operacion3 = new OperacionesSistema("Multiplicacion",lista.size()+1,"operacion");
         lista.add(operacion3);
+        OperacionesSistema operacion4 = new OperacionesSistema("Division",lista.size()+1,"operacion"); 
         lista.add(operacion4);
+        OperacionesSistema operacion5 = new OperacionesSistema("Potencia",lista.size()+1,"operacion");
         lista.add(operacion5);
+        OperacionesSistema operacion6 = new OperacionesSistema("Radicacion",lista.size()+1,"operacion"); 
         lista.add(operacion6);
+        OperacionesSistema operacion7 = new OperacionesSistema("Binario",lista.size()+1,"conversion"); 
         lista.add(operacion7);
+        OperacionesSistema operacion8 = new OperacionesSistema("Hexadecimal",lista.size()+1,"conversion"); 
         lista.add(operacion8);
+        OperacionesSistema operacion9 = new OperacionesSistema("Octal",lista.size()+1,"conversion");
         lista.add(operacion9);
-   
-        
-        //System.out.println(lista.get(1).Nombre);
     }
     
+    //Devuelve las operaciones cargadas en la calculado. 
     public OperacionesSistema obtenerOperacion(int Id){ 
-        List<OperacionesSistema> ListaMSN= this.lista; 
-        int tamano_lista= ListaMSN.size();
+        List<OperacionesSistema> Lista_Operaciones= this.lista; 
+        int tamano_lista= Lista_Operaciones.size();
         int contador=0;
         OperacionesSistema res;
-        res= ListaMSN.get(0);
+        res= Lista_Operaciones.get(0);
         if (tamano_lista>1){
         while (contador<tamano_lista){
-            if ((ListaMSN.get(contador).ID)==Id){
-                res=ListaMSN.get(contador);
-                //System.out.println(res.contenido);
-                //ListaMSN.remove(res); 
+            if ((Lista_Operaciones.get(contador).ID)==Id){
+                res=Lista_Operaciones.get(contador);
                 return res; 
             }
             else{
@@ -76,8 +67,6 @@ public class ModoCaracter {
             }
         }
         if ((res.ID)==Id){
-            //System.out.println(res.contenido);
-            //ListaMSN.remove(res);
             return res; 
         }
         else{
@@ -85,30 +74,25 @@ public class ModoCaracter {
         }
         }
         else{
-            if (tamano_lista==1){
-                
-                if ((res.ID)==Id){
-                
-                res=ListaMSN.get(0);
-                //System.out.println(res.contenido);
-                //ListaMSN.remove(res);
+            if (tamano_lista==1){ 
+                if ((res.ID)==Id){ 
+                res=Lista_Operaciones.get(0);
                 return res; 
                 }
                 else{
                     return null; 
                 }
-                
             }
             else{
-                //System.out.println("error");
                 return null; 
             }
         }
-        
     }
     
+    //Método principal de la vista modo caracter. 
     public void operar() throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{ 
     cargar_operaciones(lista); 
+    System.out.println("        Bienvenido a la calculadora de operaciones y conversiones");
     do {
     do { 
         
@@ -117,83 +101,98 @@ public class ModoCaracter {
             System.out.println("Ingrese una opción válida."); 
         } 
     } while (operacion.ID > lista.size() || operacion.ID < 1);   
-    if ((operacion.ID >= 1)&&(operacion.ID <= 5)) { 
-        System.out.println("Operacion a realizar: "+operacion.Nombre);
-        //DTO enviar = new DTO((solicitar_numeros(2)),operacion.Nombre,"0",false,"");         
-        //Controlador peticion = new Controlador(enviar);        
-        //String resultado= peticion.MiDTO.resultado;  
+    if ((operacion.Tipo.equalsIgnoreCase("conversion"))&&!(operacion.Nombre.equalsIgnoreCase("radicacion"))) { 
+        System.out.println("--> Operacion a realizar: "+operacion.Nombre);
+        DTO peticion= new DTO((solicitar_numeros(2)),operacion.Nombre,"0",false,"",operacion.Tipo);         
+        EnviarSolicitud(peticion);
     } 
-    else {         
-        System.out.println("Operacion a realizar: "+operacion.Nombre);
-        //DTO enviar= new DTO((solicitar_numeros(1)),operacion.Nombre,"0",false,""); 
-        //Controlador peticion = new Controlador(enviar);
-        //peticion.enviar_solicitud(enviar);
-        //String resultado= peticion.MiDTO.resultado;
+    else { 
+        System.out.println("--> Operacion a realizar: "+operacion.Nombre);
+        DTO peticion= new DTO((solicitar_numeros(1)),operacion.Nombre,"0",false,"",operacion.Tipo); 
+        EnviarSolicitud(peticion);
+        
+        
     } 
     
-    System.out.println("Ingrese '1' si quiere realizar otra operacion, '2' si quiere cerrar el programa"); 
-    operacion.ID=0; 
+    System.out.println("--> Ingrese '1' para realizar otra operacion o '2' si desea cerrar el programa."); 
+    //operacion.ID=0;
     decision = buffer.nextInt(); 
     } while (decision == 1); 
     }
 
+    @Override
+    public void EnviarSolicitud(DTO solicitud) {
+        //Mostrar el resultado en pantalla
+        Controlador controlador;
+        try {
+            controlador = new Controlador();
+            controlador.enviar_solicitud(solicitud);
+            System.out.println("--> Resultado: "+controlador..resultado);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ModoCaracter.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(ModoCaracter.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(ModoCaracter.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(ModoCaracter.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(ModoCaracter.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(ModoCaracter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+            //LabelResultadoInt.setText(controlador.MiDTO.resultado);
+       
+    }
     
+   
    public void menu_opciones (){
-        System.out.println("        Bienvenido a la calculadora de operaciones y conversiones");
+        
         System.out.println("--------------------------Menú de opciones---------------------------");
         imprimir_operaciones(); 
         System.out.println("---------------------------------------------------------------------");
-        System.out.print("Digite la opción deseada >>> ");
+        System.out.print("Digite la opción deseada. >>> ");
         String opcion_ingresada= buffer.nextLine();
-        if ((validar_opcion(opcion_ingresada))&&(validar_intervalo_menu(opcion_ingresada))){
+        if ((EsNumero(opcion_ingresada))&&(validar_intervalo_menu(opcion_ingresada))){
            operacion=  obtenerOperacion((Integer.parseInt(opcion_ingresada))); 
         }
         else{
-            OperacionesSistema operacion_error = new OperacionesSistema("error",0);
+            OperacionesSistema operacion_error = new OperacionesSistema("error",0,"error");
             operacion=operacion_error; 
         }
-        
-        
    }
    
+   //Imprime las operaciones y conversiones del sistema. 
    public void imprimir_operaciones(){
        for (int i=0;i<lista.size();i++ ){
-           System.out.println("Opción "+lista.get(i).ID+": "+lista.get(i).Nombre);
+           System.out.println("--> Opción "+lista.get(i).ID+": "+lista.get(i).Nombre);
        }
    }
    
-   public boolean validar_opcion(String valor_ingresado){
-       if (EsNumero(valor_ingresado)) {
-           return true; 
-       }
-       else{
-           return false;  
-       }
-       
-       
-   }
    
+   //Valida que la opción ingresada por el usuario esté dentro del intervalo de operaciones permitidas por el sistema. 
    public boolean validar_intervalo_menu(String valor_ingresado){
        if (Integer.parseInt(valor_ingresado)<=lista.size() && Integer.parseInt(valor_ingresado)>=1){
            return true; 
        }
        else{
-           //System.out.println("Faaaalso");
            return false; 
        }
    }
    
+   //Verifica que el valor ingresado por el usuario sea un entero positivo. 
    public boolean validar_intervalo_enteros(String valor_ingresado){
        if (Integer.parseInt(valor_ingresado)>=0){
            return true; 
        }
        else{
-           //System.out.println("Faaaalso500");
            return false; 
        }
    }
   
    
+   //Valida si el string ingresado es un entero.
    public boolean EsNumero(String valor_recibido){
     if (valor_recibido == null)
         return false;
@@ -201,24 +200,27 @@ public class ModoCaracter {
         return false;
     for (int i = 0; i < valor_recibido.length(); i++)
     {
-        if (!Character.isDigit(valor_recibido.charAt(i)))
-            return false;
+        if (!Character.isDigit(valor_recibido.charAt(i))){
+            System.out.println("-->Debe ingresar números enteros positivos. ");
+            return false;}
     }
     return true;
    }
    
+   
+   //Solicita la cantidad de numeros a operar por la calculadora
    public List<Integer> solicitar_numeros(int cantidad_numeros){
-       int cantidad_operandos=cantidad_numeros; //cambiar si se desean operar mayor cantidad de operadores. 
+       int cantidad_operandos=cantidad_numeros;  
        List <Integer> listan = new LinkedList(); 
        int contador=0; 
        while (contador<cantidad_operandos){
            
            do {
-               System.out.println((contador+1)+". Ingrese un número: >>>");
+               System.out.print((contador+1)+". Ingrese un número: >>> ");
             
-           //System.out.print(">>> ");
+           
            String numero_ingresado= buffer.nextLine();
-           if ((validar_opcion(numero_ingresado))&&(validar_intervalo_enteros(numero_ingresado))){
+           if ((EsNumero(numero_ingresado))&&(validar_intervalo_enteros(numero_ingresado))){
                listan.add(Integer.parseInt(numero_ingresado));
                contador++; 
            }
@@ -230,4 +232,3 @@ public class ModoCaracter {
    }
     
 }
-
