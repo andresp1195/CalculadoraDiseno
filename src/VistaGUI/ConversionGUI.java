@@ -133,10 +133,7 @@ public class ConversionGUI extends javax.swing.JFrame {
                 //crear el DTO que contenga la información de petición al controlador
                 List <Integer> listaOperandos = new LinkedList();
                 listaOperandos.add(decimalAConvertir);
-                DTO enviar = new DTO(listaOperandos,this.conversion,"",false,"");
-                //JOptionPane.showMessageDialog(new JFrame(), "Crear DTO: DTO(lista,"+this.conversion+",--,false,--","Información",JOptionPane.INFORMATION_MESSAGE);
-                //enviarlo al controlador
-                //LabelResultadoInt.setText(/*Respuesta del DTO enviado como respuesta por el controlador*/);
+                DTO enviar = new DTO(listaOperandos,this.conversion,"",false,"","Conversion");
             }
             else{
                 JOptionPane.showMessageDialog(new JFrame(),"El número que ingresó no es un decimal válido (de ceros y unos, únicamente).","Error",JOptionPane.ERROR_MESSAGE);

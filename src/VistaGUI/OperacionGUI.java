@@ -164,7 +164,7 @@ public class OperacionGUI extends javax.swing.JFrame implements IVistaControlado
                 List <Integer> listaOperandos = new LinkedList();
                 listaOperandos.add(op1);
                 listaOperandos.add(op2);
-                DTO peticion = new DTO(listaOperandos,this.operacion,"",false,"");
+                DTO peticion = new DTO(listaOperandos,this.operacion,"",false,"","Operacion");
                 EnviarSolicitud(peticion);
             }
             else{
@@ -239,9 +239,12 @@ public class OperacionGUI extends javax.swing.JFrame implements IVistaControlado
 
     @Override
     public void EnviarSolicitud(DTO solicitud) {
-        Controlador controlador = null;
+        //Mostrar el resultado en pantalla
+        Controlador controlador;
         try {
-            controlador = new Controlador(solicitud);
+            controlador = new Controlador();
+            controlador.enviar_solicitud(solicitud);
+            LabelResultadoInt.setText(controlador.MiDTO.resultado);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(OperacionGUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -255,8 +258,6 @@ public class OperacionGUI extends javax.swing.JFrame implements IVistaControlado
         } catch (InvocationTargetException ex) {
             Logger.getLogger(OperacionGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //Mostrar el resultado en pantalla
-        LabelResultadoInt.setText(controlador.MiDTO.resultado);
     }
 
 }

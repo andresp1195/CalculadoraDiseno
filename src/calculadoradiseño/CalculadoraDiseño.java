@@ -26,12 +26,12 @@ public class CalculadoraDiseño {
         // TODO code application logic here
         
         //VISTA MODO CARACTER
-        ModoCaracter mc= new ModoCaracter();
-        mc.operar(); 
+        //ModoCaracter mc= new ModoCaracter();
+        //mc.operar(); 
         
         //VISTA GUI
-//        VistaGUI.VentanaPrincipalGUI ventanaPrincipal = new VistaGUI.VentanaPrincipalGUI();
-//        ventanaPrincipal.setVisible(true);
+        VistaGUI.VentanaPrincipalGUI ventanaPrincipal = new VistaGUI.VentanaPrincipalGUI();
+        ventanaPrincipal.setVisible(true);
         
          // TODO code application logic here
 //        List<Integer> operandos = new LinkedList();

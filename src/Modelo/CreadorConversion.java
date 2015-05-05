@@ -21,29 +21,17 @@ public class CreadorConversion {
         //this.MiDTO=MiDTO;
 }
     public static IConversion Asignar(DTO Peticion) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{
+        //Reflexión para saber cual conversión llamar
         Class ClaseAsignada = Class.forName("Modelo."+Peticion.operacion);          
-        //Method MetodoDeseado = ClaseAsignada.getMethod("Convertir",new Class[]{int.class});        
-        //Object InstanciaAsignada = ClaseAsignada.getConstructor(new Class[]{}).newInstance(new Object[] {});
         Object InstanciaAsignada = ClaseAsignada.getConstructor().newInstance();
-        /*
-        float resultadoTotal;
-        float elementoActualDeLaLista;
-        int tamano = Peticion.lista.size();
-        resultadoTotal = Peticion.lista.get(0);
-        */
-         try{
+
+        try{
             IConversion conversion = (IConversion) InstanciaAsignada;
-            /*for (int i=1;i<tamano;i++){            
-                elementoActualDeLaLista = Peticion.lista.get(i);
-                resultadoTotal = Float.parseFloat(operacion.Calcular(resultadoTotal, elementoActualDeLaLista));
-            }*/
             return conversion;
          }
          catch(Exception e){
              return null;
          }
-         
-        //return null;
     }
     public static DTO Efectuar(DTO Peticion, IConversion Conversion){
         int resultadoTotal;

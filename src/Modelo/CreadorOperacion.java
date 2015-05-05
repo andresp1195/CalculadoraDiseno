@@ -24,11 +24,11 @@ public class CreadorOperacion { //ShapeFactory
     
     
     public static IOperacion Asignar(DTO Peticion) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{
+        //Reflexión para saber cual operación llamar
         Class ClaseAsignada = Class.forName("Modelo."+Peticion.operacion);          
-       // Method MetodoDeseado = ClaseAsignada.getMethod("Calcular",new Class[]{float.class,float.class});        
-        //Object InstanciaAsignada = ClaseAsignada.getConstructor(new Class[]{}).newInstance(new Object[] {});
         Object InstanciaAsignada = ClaseAsignada.getConstructor().newInstance();        
-         try{
+        
+        try{
             IOperacion operacion = (IOperacion) InstanciaAsignada;            
             return operacion;
          }
@@ -48,7 +48,6 @@ public class CreadorOperacion { //ShapeFactory
             elementoActualDeLaLista = Peticion.lista.get(i);
             resultadoTotal = Float.parseFloat(Operacion.Calcular(resultadoTotal, elementoActualDeLaLista));
         }
-        
         Peticion.resultado = String.valueOf(resultadoTotal);
         return Peticion;
     }

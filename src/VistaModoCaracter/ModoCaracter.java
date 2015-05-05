@@ -119,16 +119,16 @@ public class ModoCaracter {
     } while (operacion.ID > lista.size() || operacion.ID < 1);   
     if ((operacion.ID >= 1)&&(operacion.ID <= 5)) { 
         System.out.println("Operacion a realizar: "+operacion.Nombre);
-        DTO enviar= new DTO((solicitar_numeros(2)),operacion.Nombre,"0",false,"");         
-        Controlador peticion = new Controlador(enviar);        
-        String resultado= peticion.MiDTO.resultado;  
+        //DTO enviar = new DTO((solicitar_numeros(2)),operacion.Nombre,"0",false,"");         
+        //Controlador peticion = new Controlador(enviar);        
+        //String resultado= peticion.MiDTO.resultado;  
     } 
     else {         
         System.out.println("Operacion a realizar: "+operacion.Nombre);
-        DTO enviar= new DTO((solicitar_numeros(1)),operacion.Nombre,"0",false,""); 
-        Controlador peticion = new Controlador(enviar);
-        peticion.enviar_solicitud(enviar);
-        String resultado= peticion.MiDTO.resultado;
+        //DTO enviar= new DTO((solicitar_numeros(1)),operacion.Nombre,"0",false,""); 
+        //Controlador peticion = new Controlador(enviar);
+        //peticion.enviar_solicitud(enviar);
+        //String resultado= peticion.MiDTO.resultado;
     } 
     
     System.out.println("Ingrese '1' si quiere realizar otra operacion, '2' si quiere cerrar el programa"); 
