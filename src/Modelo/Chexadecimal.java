@@ -10,5 +10,10 @@ package Modelo;
  * @author Mauricio Gamboa
  */
 public class Chexadecimal {
-    
+      
+    public String Convertir (float decimal){
+        int numero=(int)decimal;
+        String hexadecimal = Integer.toHexString(numero);
+        return hexadecimal; 
+    }
 }

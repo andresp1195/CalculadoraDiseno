@@ -10,5 +10,9 @@ package Modelo;
  * @author Mauricio Gamboa
  */
 public class Cbinario {
-    
+    public String Convertir (float decimal){
+        int numero=(int)decimal;
+        String binario = Integer.toBinaryString(numero);
+        return binario; 
+    }
 }
