@@ -114,7 +114,7 @@ public class OperacionGUI extends javax.swing.JFrame implements IVistaControlado
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelResultado)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelResultadoString, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(LabelResultadoString, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE))
                             .addComponent(BotonCalcular))))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
@@ -169,7 +169,7 @@ public class OperacionGUI extends javax.swing.JFrame implements IVistaControlado
             }
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(new JFrame(),"Debe ingresar los datos requeridos (Operandos) para continuar.\nLos datos deben ser números enteros positivos.","Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame(),"Debe ingresar los datos requeridos (Operandos) correctamente para continuar.\nLos datos deben ser números enteros positivos.","Error",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_BotonCalcularActionPerformed
 

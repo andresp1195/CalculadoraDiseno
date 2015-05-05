@@ -17,7 +17,7 @@ public class Hexadecimal implements IConversion{
     public String Convertir (int decimal){
         //int numero=(int)decimal;
         String hexadecimal = Integer.toHexString(decimal);
-        return hexadecimal; 
+        return hexadecimal.toUpperCase(); 
     }
 
     @Override

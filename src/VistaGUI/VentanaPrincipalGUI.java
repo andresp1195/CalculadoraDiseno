@@ -5,6 +5,9 @@
  */
 package VistaGUI;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -53,9 +56,24 @@ public class VentanaPrincipalGUI extends javax.swing.JFrame {
         });
 
         MenuAyuda.setText("Ayuda");
+        MenuAyuda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuAyudaMouseClicked(evt);
+            }
+        });
         BarraDeMenu.add(MenuAyuda);
 
         MenuCreditos.setText("Créditos");
+        MenuCreditos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuCreditosMouseClicked(evt);
+            }
+        });
+        MenuCreditos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCreditosActionPerformed(evt);
+            }
+        });
         BarraDeMenu.add(MenuCreditos);
 
         setJMenuBar(BarraDeMenu);
@@ -141,6 +159,18 @@ public class VentanaPrincipalGUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_ComboBoxOperacionActionPerformed
+
+    private void MenuCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCreditosActionPerformed
+        
+    }//GEN-LAST:event_MenuCreditosActionPerformed
+
+    private void MenuCreditosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuCreditosMouseClicked
+        JOptionPane.showMessageDialog(new JFrame(), "El presente proyecto fue desarollado para el curso de Diseño de Software del I Semestre, 2015, por los estudiantes:\n\n - Josué Espinoza Castro\n - Luis Mauricio Gamboa Cubero\n - Andrés Mauricio Pacheco Quesada", "Créditos", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_MenuCreditosMouseClicked
+
+    private void MenuAyudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuAyudaMouseClicked
+        JOptionPane.showMessageDialog(new JFrame(), "¡Bienvenido!\n\nPara ejecutar: seleccione la operación deseada.\nLuego, modifique los parámetros de la operación y obtenga el resultado.", "Ayuda", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_MenuAyudaMouseClicked
 
     /**
      * @param args the command line arguments

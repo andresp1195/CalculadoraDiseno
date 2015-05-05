@@ -161,7 +161,7 @@ public class ConversionGUI extends javax.swing.JFrame implements IVistaControlad
             }
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(new JFrame(),"Debe ingresar los datos requeridos (Decimal a Convertir) para continuar.","Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame(),"Debe ingresar los datos requeridos (Decimal a Convertir) correctamente para continuar.","Error",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_BotonCalcularActionPerformed
 

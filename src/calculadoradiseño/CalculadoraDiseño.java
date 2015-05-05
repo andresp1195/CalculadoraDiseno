@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package calculadoradiseño;
+
 import java.lang.reflect.InvocationTargetException;
 /**
  *
@@ -17,7 +18,7 @@ public class CalculadoraDiseño {
     public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException {
         
         //VISTA MODO CARACTER
-        //ModoCaracter mc= new ModoCaracter();
+        //VistaModoCaracter.ModoCaracter mc= new VistaModoCaracter.ModoCaracter();
         //mc.operar(); 
         
         //VISTA GUI
