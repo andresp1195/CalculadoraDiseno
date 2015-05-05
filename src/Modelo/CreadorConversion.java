@@ -17,8 +17,8 @@ import java.util.List;
  */
 public class CreadorConversion {
     public DTO MiDTO;
-    public CreadorConversion(DTO MiDTO){
-        this.MiDTO=MiDTO;
+    public CreadorConversion(){
+        //this.MiDTO=MiDTO;
 }
     public static IConversion Asignar(DTO Peticion) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{
         Class ClaseAsignada = Class.forName("Modelo."+Peticion.operacion);          

@@ -26,7 +26,8 @@ public class ModoCaracter {
     OperacionesSistema operacion; 
     int decision; //Decision de Salida 
     Scanner buffer = new Scanner(System.in); 
-    public List<OperacionesSistema> lista = new LinkedList <OperacionesSistema>();  
+    public List<OperacionesSistema> lista = new LinkedList <OperacionesSistema>(); 
+    //public Operaciones op; 
     
     
   
@@ -39,9 +40,9 @@ public class ModoCaracter {
         OperacionesSistema operacion4 = new OperacionesSistema("Division",4); 
         OperacionesSistema operacion5 = new OperacionesSistema("Potencia",5);
         OperacionesSistema operacion6 = new OperacionesSistema("Radicacion",6); 
-        OperacionesSistema operacion7 = new OperacionesSistema("Binario",7); 
-        OperacionesSistema operacion8 = new OperacionesSistema("Hexadecimal",8); 
-        OperacionesSistema operacion9 = new OperacionesSistema("Octal",9);
+        OperacionesSistema operacion7 = new OperacionesSistema("Cbinario",7); 
+        OperacionesSistema operacion8 = new OperacionesSistema("Chexadecimal",8); 
+        OperacionesSistema operacion9 = new OperacionesSistema("Coctal",9);
         lista.add(operacion1); 
         lista.add(operacion2);
         lista.add(operacion3);
@@ -118,11 +119,9 @@ public class ModoCaracter {
     } while (operacion.ID > lista.size() || operacion.ID < 1);   
     if ((operacion.ID >= 1)&&(operacion.ID <= 5)) { 
         System.out.println("Operacion a realizar: "+operacion.Nombre);
-        DTO peticion= new DTO((solicitar_numeros(5)),operacion.Nombre,"0",false,"");         
-        //EnviarSolicitud(peticion);
-        Controlador enviar = new Controlador(peticion);        
-        String resultado= enviar.MiDTO.resultado;  
-        System.out.println("Resultado: "+resultado);
+        DTO enviar= new DTO((solicitar_numeros(2)),operacion.Nombre,"0",false,"");         
+        Controlador peticion = new Controlador(enviar);        
+        String resultado= peticion.MiDTO.resultado;  
     } 
     else {         
         System.out.println("Operacion a realizar: "+operacion.Nombre);
@@ -130,11 +129,10 @@ public class ModoCaracter {
         Controlador peticion = new Controlador(enviar);
         peticion.enviar_solicitud(enviar);
         String resultado= peticion.MiDTO.resultado;
-        System.out.println("Resultado: "+resultado);
     } 
     
     System.out.println("Ingrese '1' si quiere realizar otra operacion, '2' si quiere cerrar el programa"); 
-    //operacion.ID=0; 
+    operacion.ID=0; 
     decision = buffer.nextInt(); 
     } while (decision == 1); 
     }
@@ -169,7 +167,6 @@ public class ModoCaracter {
            return true; 
        }
        else{
-           System.out.println("Debe ingresar números enteros positivos. ");
            return false;  
        }
        
@@ -191,12 +188,12 @@ public class ModoCaracter {
            return true; 
        }
        else{
+           //System.out.println("Faaaalso500");
            return false; 
        }
    }
   
    
-   //Valida si el string ingresado es un entero.
    public boolean EsNumero(String valor_recibido){
     if (valor_recibido == null)
         return false;
@@ -210,18 +207,16 @@ public class ModoCaracter {
     return true;
    }
    
-   
-   //Solicita la cantidad de numeros a operar por la calculadora
    public List<Integer> solicitar_numeros(int cantidad_numeros){
-       int cantidad_operandos=cantidad_numeros;  
+       int cantidad_operandos=cantidad_numeros; //cambiar si se desean operar mayor cantidad de operadores. 
        List <Integer> listan = new LinkedList(); 
        int contador=0; 
        while (contador<cantidad_operandos){
            
            do {
-               System.out.print((contador+1)+". Ingrese un número: >>> ");
+               System.out.println((contador+1)+". Ingrese un número: >>>");
             
-           
+           //System.out.print(">>> ");
            String numero_ingresado= buffer.nextLine();
            if ((validar_opcion(numero_ingresado))&&(validar_intervalo_enteros(numero_ingresado))){
                listan.add(Integer.parseInt(numero_ingresado));

@@ -18,8 +18,8 @@ import java.util.List;
  */
 public class CreadorOperacion { //ShapeFactory
     public DTO MiDTO;
-    public CreadorOperacion(DTO MiDTO){
-        this.MiDTO=MiDTO;
+    public CreadorOperacion(){
+//        this.MiDTO=MiDTO;
     }
     
     
@@ -27,13 +27,7 @@ public class CreadorOperacion { //ShapeFactory
         Class ClaseAsignada = Class.forName("Modelo."+Peticion.operacion);          
        // Method MetodoDeseado = ClaseAsignada.getMethod("Calcular",new Class[]{float.class,float.class});        
         //Object InstanciaAsignada = ClaseAsignada.getConstructor(new Class[]{}).newInstance(new Object[] {});
-        Object InstanciaAsignada = ClaseAsignada.getConstructor().newInstance();
-        /*
-        float resultadoTotal;
-        float elementoActualDeLaLista;
-        int tamano = Peticion.lista.size();
-        resultadoTotal = Peticion.lista.get(0);
-        */
+        Object InstanciaAsignada = ClaseAsignada.getConstructor().newInstance();        
          try{
             IOperacion operacion = (IOperacion) InstanciaAsignada;            
             return operacion;
