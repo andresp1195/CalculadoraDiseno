@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author Mauricio Gamboa
  */
 public class Controlador {
-    public DTO MiDTO; 
+    //public DTO MiDTO; 
     
     public Controlador() throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{
     }
@@ -36,8 +36,7 @@ public class Controlador {
         Method efectuar = ClaseCreador.getMethod("Efectuar", DTO.class, ClaseAsignada);
         
         try{
-            this.MiDTO = (DTO) efectuar.invoke(InstanciaCreador, MiDTO, (asignar.invoke(InstanciaCreador, MiDTO)));
-            return this.MiDTO;
+            return (DTO) efectuar.invoke(InstanciaCreador, MiDTO, (asignar.invoke(InstanciaCreador, MiDTO)));
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(new JFrame(), "Problema con la obtención del nombre de la operación.");

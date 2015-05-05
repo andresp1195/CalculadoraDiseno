@@ -34,6 +34,7 @@ public class CreadorConversion {
          }
     }
     public static DTO Efectuar(DTO Peticion, IConversion Conversion){
+        System.out.println("En efectuar: Conversion = "+Conversion);
         int resultadoTotal;
         int elementoActualDeLaLista;
         int tamano = Peticion.lista.size();
@@ -42,7 +43,6 @@ public class CreadorConversion {
             elementoActualDeLaLista = Peticion.lista.get(i);
             resultadoTotal = Integer.parseInt(Conversion.Convertir(elementoActualDeLaLista));
         }
-                
         Peticion.resultado = String.valueOf(resultadoTotal);
         return Peticion;
     }

@@ -5,9 +5,14 @@
  */
 package VistaGUI;
 
+import Controlador.Controlador;
 import calculadoradiseño.DTO;
+import calculadoradiseño.IVistaControlador;
+import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -15,7 +20,7 @@ import javax.swing.JOptionPane;
  *
  * @author Jespi_000
  */
-public class ConversionGUI extends javax.swing.JFrame {
+public class ConversionGUI extends javax.swing.JFrame implements IVistaControlador{
     public String conversion;
     /**
      * Creates new form ConversionGUI
@@ -45,6 +50,8 @@ public class ConversionGUI extends javax.swing.JFrame {
         FieldDecimal = new javax.swing.JTextField();
         BotonCalcular = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        LabelResultado = new javax.swing.JLabel();
+        LabelResultadoString = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -74,6 +81,8 @@ public class ConversionGUI extends javax.swing.JFrame {
             }
         });
 
+        LabelResultado.setText("Resultado:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,9 +102,16 @@ public class ConversionGUI extends javax.swing.JFrame {
                                 .addComponent(BotonCalcular)
                                 .addGap(161, 161, 161))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(LabelDecimalAConvertir)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(FieldDecimal, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(17, 17, 17)
+                                        .addComponent(LabelResultado)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(LabelResultadoString, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(LabelDecimalAConvertir)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(FieldDecimal, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(111, 111, 111))))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -118,7 +134,11 @@ public class ConversionGUI extends javax.swing.JFrame {
                     .addComponent(LabelDecimalAConvertir))
                 .addGap(18, 18, 18)
                 .addComponent(BotonCalcular)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabelResultado)
+                    .addComponent(LabelResultadoString))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -133,7 +153,8 @@ public class ConversionGUI extends javax.swing.JFrame {
                 //crear el DTO que contenga la información de petición al controlador
                 List <Integer> listaOperandos = new LinkedList();
                 listaOperandos.add(decimalAConvertir);
-                DTO enviar = new DTO(listaOperandos,this.conversion,"",false,"","Conversion");
+                DTO peticion = new DTO(listaOperandos,this.conversion,"",false,"","Conversion");
+                EnviarSolicitud(peticion);
             }
             else{
                 JOptionPane.showMessageDialog(new JFrame(),"El número que ingresó no es un decimal válido (de ceros y unos, únicamente).","Error",JOptionPane.ERROR_MESSAGE);
@@ -196,6 +217,30 @@ public class ConversionGUI extends javax.swing.JFrame {
     private javax.swing.JLabel LabelConversion;
     private javax.swing.JLabel LabelConversionSeleccionada;
     private javax.swing.JLabel LabelDecimalAConvertir;
+    private javax.swing.JLabel LabelResultado;
+    private javax.swing.JLabel LabelResultadoString;
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void EnviarSolicitud(DTO solicitud) {
+        //Mostrar el resultado en pantalla
+        Controlador controlador;
+        try {
+            controlador = new Controlador();
+            LabelResultadoString.setText(controlador.enviar_solicitud(solicitud).resultado);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(OperacionGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(OperacionGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(OperacionGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(OperacionGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(OperacionGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(OperacionGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -5,12 +5,15 @@
  */
 package Modelo;
 
+import calculadoradiseño.IConversion;
+
 /**
  *
  * @author Mauricio Gamboa
  */
-public class Hexadecimal {
+public class Hexadecimal implements IConversion{
       
+    @Override
     public String Convertir (int decimal){
         //int numero=(int)decimal;
         String hexadecimal = Integer.toHexString(decimal);

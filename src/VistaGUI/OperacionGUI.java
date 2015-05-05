@@ -59,7 +59,7 @@ public class OperacionGUI extends javax.swing.JFrame implements IVistaControlado
         FieldOperando2 = new javax.swing.JTextField();
         LabelOperando2 = new javax.swing.JLabel();
         LabelResultado = new javax.swing.JLabel();
-        LabelResultadoInt = new javax.swing.JLabel();
+        LabelResultadoString = new javax.swing.JLabel();
         BotonAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -117,7 +117,7 @@ public class OperacionGUI extends javax.swing.JFrame implements IVistaControlado
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelResultado)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelResultadoInt, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(LabelResultadoString, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(BotonCalcular))))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
@@ -143,7 +143,7 @@ public class OperacionGUI extends javax.swing.JFrame implements IVistaControlado
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LabelResultado)
-                    .addComponent(LabelResultadoInt, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LabelResultadoString, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -234,7 +234,7 @@ public class OperacionGUI extends javax.swing.JFrame implements IVistaControlado
     private javax.swing.JLabel LabelOperando1;
     private javax.swing.JLabel LabelOperando2;
     private javax.swing.JLabel LabelResultado;
-    private javax.swing.JLabel LabelResultadoInt;
+    private javax.swing.JLabel LabelResultadoString;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -243,8 +243,7 @@ public class OperacionGUI extends javax.swing.JFrame implements IVistaControlado
         Controlador controlador;
         try {
             controlador = new Controlador();
-            controlador.enviar_solicitud(solicitud);
-            LabelResultadoInt.setText(controlador.MiDTO.resultado);
+            LabelResultadoString.setText(controlador.enviar_solicitud(solicitud).resultado);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(OperacionGUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {

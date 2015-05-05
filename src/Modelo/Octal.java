@@ -5,11 +5,14 @@
  */
 package Modelo;
 
+import calculadoradiseño.IConversion;
+
 /**
  *
  * @author Mauricio Gamboa
  */
-public class Octal {
+public class Octal implements IConversion{
+     @Override
      public String Convertir (int numero){
         
          //int numero2=(int)numero;
@@ -22,6 +25,7 @@ public class Octal {
 //            numero=numero/8;
 //    }
          String octal = Integer.toOctalString(numero);
+         System.out.println("octal"+octal);
          return octal;
     }
 }

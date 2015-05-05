@@ -5,11 +5,14 @@
  */
 package Modelo;
 
+import calculadoradiseño.IConversion;
+
 /**
  *
  * @author Mauricio Gamboa
  */
-public class Binario {
+public class Binario implements IConversion{
+    @Override
     public String Convertir (int decimal){
         //int numero=(int)decimal;
         String binario = Integer.toBinaryString(decimal);

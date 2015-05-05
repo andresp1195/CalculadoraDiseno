@@ -129,15 +129,15 @@ public class VentanaPrincipalGUI extends javax.swing.JFrame {
                 //CONVERSIONES
                     
                 case "Convertir a Octal":
-                    ConversionGUI COctal = new ConversionGUI("Coctal","Convertir Decimal a Octal");
+                    ConversionGUI COctal = new ConversionGUI("Octal","Convertir Decimal a Octal");
                     COctal.setVisible(true);
                     break;
                 case "Convertir a Binario":
-                    ConversionGUI CBinario = new ConversionGUI("Cbinario","Convertir Decimal a Binario");
+                    ConversionGUI CBinario = new ConversionGUI("Binario","Convertir Decimal a Binario");
                     CBinario.setVisible(true);
                     break;
                 case "Convertir a Hexadecimal":
-                    ConversionGUI CHexadecimal = new ConversionGUI("Chexadecimal","Convertir Decimal a Hexadecimal");
+                    ConversionGUI CHexadecimal = new ConversionGUI("Hexadecimal","Convertir Decimal a Hexadecimal");
                     CHexadecimal.setVisible(true);
                     break;
             }
