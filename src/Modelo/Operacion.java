@@ -11,6 +11,9 @@ import calculadoradiseño.DTO;
  *
  * @author Andres
  */
-public abstract class Operacion {
-    public DTO operandos;            
+public abstract class Operacion{
+    public String resultado;
+    public void SetResultado(String resultado){
+        this.resultado = resultado;
     }
+}

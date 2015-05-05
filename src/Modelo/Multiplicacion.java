@@ -16,7 +16,7 @@ public class Multiplicacion implements IOperacion{
     @Override    
     public String Calcular (float factor1, float factor2){
         float resultado = (factor1*factor2);
-        String resultadoConvertido = String.valueOf(resultado);        
+        String resultadoConvertido = String.valueOf(resultado);  
         return resultadoConvertido;
     }
 }

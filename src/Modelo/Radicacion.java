@@ -17,7 +17,7 @@ import java.util.List;
         @Override        
         public String Calcular(float subradical,float indice){            
             double resultado = (Math.pow(subradical,(1/indice)));            
-            String resultadoConvertido = String.valueOf(resultado);        
+            String resultadoConvertido = String.valueOf(resultado);   
             return resultadoConvertido;
         }
     }

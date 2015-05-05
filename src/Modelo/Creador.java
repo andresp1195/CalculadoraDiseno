@@ -28,16 +28,38 @@ public class Creador { //ShapeFactory
         Method MetodoDeseado = ClaseAsignada.getMethod("Calcular",new Class[]{float.class,float.class});        
         //Object InstanciaAsignada = ClaseAsignada.getConstructor(new Class[]{}).newInstance(new Object[] {});
         Object InstanciaAsignada = ClaseAsignada.getConstructor().newInstance();
-         
+        /*
+        float resultadoTotal;
+        float elementoActualDeLaLista;
+        int tamano = Peticion.lista.size();
+        resultadoTotal = Peticion.lista.get(0);
+        */
          try{
-            //System.out.println("Interfaz conectada: "+ClaseAsignada.getInterfaces()[0]+"\nClase Asignada.isInterface(): "+ClaseAsignada.isInterface()+"\nInstancia Asignada: "+InstanciaAsignada.toString());
-            IOperacion.class.cast(InstanciaAsignada);
-            return (IOperacion) InstanciaAsignada;
+            IOperacion operacion = (IOperacion) InstanciaAsignada;
+            /*for (int i=1;i<tamano;i++){            
+                elementoActualDeLaLista = Peticion.lista.get(i);
+                resultadoTotal = Float.parseFloat(operacion.Calcular(resultadoTotal, elementoActualDeLaLista));
+            }*/
+            return operacion;
          }
          catch(Exception e){
              return null;
          }
          
         //return null;
+    }
+    public static DTO EfectuarOperacion(DTO Peticion, IOperacion Operacion){
+        float resultadoTotal;
+        float elementoActualDeLaLista;
+        int tamano = Peticion.lista.size();
+        resultadoTotal = Peticion.lista.get(0);
+        
+        for (int i=1;i<tamano;i++){            
+            elementoActualDeLaLista = Peticion.lista.get(i);
+            resultadoTotal = Float.parseFloat(Operacion.Calcular(resultadoTotal, elementoActualDeLaLista));
+        }
+        
+        Peticion.resultado = String.valueOf(resultadoTotal);
+        return Peticion;
     }
 }

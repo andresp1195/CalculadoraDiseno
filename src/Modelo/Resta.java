@@ -20,7 +20,7 @@ public class Resta implements IOperacion {
     @Override    
     public String Calcular (float minuendo, float sustraendo){
         float resultado = (minuendo-sustraendo);
-        String resultadoConvertido = String.valueOf(resultado);        
+        String resultadoConvertido = String.valueOf(resultado);    
         return resultadoConvertido;
     } 
 }

@@ -13,6 +13,7 @@ import java.util.List;
  * @author Andres
  */
 public interface IOperacion { //Shape
-    public String Calcular(float x,float y);}
+    public String Calcular(float x,float y);
+}
 
    

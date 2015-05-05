@@ -20,7 +20,7 @@ public class Potencia implements IOperacion {
     @Override       
     public String Calcular(float base, float exponente){       
         double resultado = (Math.pow(base,exponente));
-        String resultadoConvertido = String.valueOf(resultado);        
+        String resultadoConvertido = String.valueOf(resultado); 
         return resultadoConvertido;
     }
 } 

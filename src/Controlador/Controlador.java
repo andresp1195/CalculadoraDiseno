@@ -24,21 +24,10 @@ public class Controlador {
     }
     
     public static DTO enviar_solicitud(DTO MiDTO) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{
-        float resultadoTotal;
-        float elementoActualDeLaLista;
-        int tamano = MiDTO.lista.size();
-        resultadoTotal = MiDTO.lista.get(0);
         
         IOperacion operacion = Creador.AsignarOperacion(MiDTO);
         
-        for (int i=1;i<tamano;i++){            
-            elementoActualDeLaLista = MiDTO.lista.get(i);
-            resultadoTotal = Float.parseFloat(operacion.Calcular(resultadoTotal, elementoActualDeLaLista));
-        }
-        
-        MiDTO.resultado = String.valueOf(resultadoTotal);
-        
-        return MiDTO;
+        return Creador.EfectuarOperacion(MiDTO, operacion);
         
         
     }
