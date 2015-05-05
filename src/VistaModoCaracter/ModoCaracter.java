@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  */
 public class ModoCaracter implements IVistaControlador {
     OperacionesSistema operacion; 
-    int decision; //Decision de Salida del sistema.  
+    String decision; //Decision de Salida del sistema.  "1" para continuar, cualquier otra tecla para salir. 
     Scanner buffer = new Scanner(System.in); 
     public List<OperacionesSistema> lista = new LinkedList <OperacionesSistema>(); 
     
@@ -113,10 +113,11 @@ public class ModoCaracter implements IVistaControlador {
         DTO peticion= new DTO((solicitar_numeros(1)),operacion.Nombre,"0",false,"",operacion.Tipo); 
         EnviarSolicitud(peticion);
     } 
-    System.out.println("Ingrese '1' para realizar otra operacion o cualquier tecla para salir del sistema."); 
+    System.out.println("Ingrese '1' para realizar otra operacion o cualquier número para salir del sistema."); 
     //operacion.ID=0;
-    decision = buffer.nextInt(); 
-    } while (decision == 1); 
+    //decision = buffer.nextInt(); 
+    decision= buffer.nextLine();
+    } while (decision.equalsIgnoreCase("1")); 
     }
     
     @Override
