@@ -15,10 +15,10 @@ public class Division implements IOperacion{
     public float dividendo;    
     @Override
     public String Calcular(float dividendo,float divisor){
-        while (divisor!=0){
+//        while (divisor!=0){
             float resultado = (dividendo/divisor);
             String resultadoConvertido = String.valueOf(resultado);
             return resultadoConvertido;}
-        return "true";
+//        return "true";
     }
-}
+//}

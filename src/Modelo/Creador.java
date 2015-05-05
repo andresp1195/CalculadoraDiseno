@@ -35,7 +35,7 @@ public class Creador { //ShapeFactory
          for (int i=1;i<tamano;i++){            
             elementoActualDeLaLista = Peticion.lista.get(i);
             resultadoTotal = Float.parseFloat(MetodoDeseado.invoke(InstanciaAsignada,new Object[]{resultadoTotal,elementoActualDeLaLista}).toString());
-         }
+         }System.out.println(resultadoTotal);
         return null;
     }
 }

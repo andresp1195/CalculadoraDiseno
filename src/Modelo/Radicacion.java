@@ -12,19 +12,13 @@ import java.util.List;
  * @author Mauricio Gamboa
  */
     public class Radicacion implements IOperacion {
-        float indice;
-        int subradical;
-        public Radicacion(){
-            //Creador(operandos.lista);
-        }
-        @Override
-        public void Creador(List<Integer> listaDeOperandos){
-            indice = listaDeOperandos.get(0);
-            subradical = listaDeOperandos.get(1);
-            indice = ResultadoDeLaRadicacion((int) indice,(1/subradical));
-        }
-        public float ResultadoDeLaRadicacion(int indice,int subradical){
-            return (float)(Math.pow(indice,(1/subradical)));
+        public float indice;
+        public int subradical;
+        @Override        
+        public String Calcular(float indice,float subradical){
+            double resultado = (Math.pow(indice,(1/subradical)));            
+            String resultadoConvertido = String.valueOf(resultado);        
+            return resultadoConvertido;
         }
     }
     

@@ -10,30 +10,17 @@ import java.util.LinkedList;
 import java.util.List;
 import java.lang.Math.*;
 import Modelo.Multiplicacion;
-
 /**
  *
  * @author Mauricio Gamboa
  */
 public class Potencia implements IOperacion {
-    int elementoActualDeLaLista;
-    double potenciaTotal;
-    int potenciaAcumulada;
-    public Potencia(){
-        //Creador(operandos.lista);
+    public float base;
+    public float exponente;
+    @Override       
+    public String Calcular(float base, float exponente){       
+        double resultado = (Math.pow(base,exponente));
+        String resultadoConvertido = String.valueOf(resultado);        
+        return resultadoConvertido;
     }
-    @Override
-    public void Creador(List<Integer> listaDeOperandos){
-        Multiplicacion multiplicarExponentes = new Multiplicacion();
-        int exponente = 1;
-        int base = listaDeOperandos.get(0); 
-        int tamano = listaDeOperandos.size();
-        for (int i=1;i<tamano;i++){
-            //exponente = multiplicarExponentes.ResultadoDeLaMultiplicacion(exponente,listaDeOperandos.get(i));
-            potenciaTotal=ResultadoDeLaPotencia(base,exponente);}
-    }
-    
-    public double ResultadoDeLaPotencia(int base, int exponente){
-        return (Math.pow(base, exponente));
-    }
-}
+} 
