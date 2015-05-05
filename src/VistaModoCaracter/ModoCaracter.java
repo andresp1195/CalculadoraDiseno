@@ -142,7 +142,6 @@ public class ModoCaracter implements IVistaControlador {
             Logger.getLogger(ModoCaracter.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-            //LabelResultadoInt.setText(controlador.MiDTO.resultado);
        
     }
     
