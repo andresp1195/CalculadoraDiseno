@@ -5,8 +5,6 @@
  */
 package calculadoradiseño;
 
-import calculadoradiseño.DTO;
-import java.util.List;
 
 /**
  *
@@ -14,6 +12,7 @@ import java.util.List;
  */
 public interface IOperacion { //Shape
     public String Calcular(float x,float y);
+    public boolean Validar(float x, float y);
 }
 
    

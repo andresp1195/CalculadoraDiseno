@@ -6,10 +6,7 @@
 package VistaGUI;
 import Controlador.Controlador;
 import calculadoradiseño.IVistaControlador;
-import VistaGUI.VentanaPrincipalGUI;
 import calculadoradiseño.DTO;
-//import calculadoradiseño.DTO;
-import java.awt.event.WindowEvent;
 import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
@@ -243,7 +240,13 @@ public class OperacionGUI extends javax.swing.JFrame implements IVistaControlado
         Controlador controlador;
         try {
             controlador = new Controlador();
-            LabelResultadoString.setText(controlador.enviar_solicitud(solicitud).resultado);
+            DTO respuesta = controlador.enviar_solicitud(solicitud);
+            if (respuesta.error == true){
+                JOptionPane.showMessageDialog(new JFrame(),respuesta.mensaje_error,"Error",JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+                LabelResultadoString.setText(respuesta.resultado);
+            }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(OperacionGUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {

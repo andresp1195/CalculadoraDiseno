@@ -17,9 +17,7 @@ import java.util.List;
  * @author Andres
  */
 public class CreadorOperacion { //ShapeFactory
-    public DTO MiDTO;
     public CreadorOperacion(){
-//        this.MiDTO=MiDTO;
     }
     
     
@@ -39,6 +37,14 @@ public class CreadorOperacion { //ShapeFactory
         //return null;
     }
     public static DTO Efectuar(DTO Peticion, IOperacion Operacion){
+        //validar que todos los parametros de la lista sean enteros positivos
+        if (!(ValidarLista.Validar(Peticion.lista))){
+            //Meter el error en el DTO
+            Peticion.error = true;
+            Peticion.mensaje_error = "Existe un operando menor que cero.";
+            return Peticion;
+        }
+        
         float resultadoTotal;
         float elementoActualDeLaLista;
         int tamano = Peticion.lista.size();
@@ -46,7 +52,14 @@ public class CreadorOperacion { //ShapeFactory
         
         for (int i=1;i<tamano;i++){            
             elementoActualDeLaLista = Peticion.lista.get(i);
-            resultadoTotal = Float.parseFloat(Operacion.Calcular(resultadoTotal, elementoActualDeLaLista));
+            if (Operacion.Validar(resultadoTotal, elementoActualDeLaLista)){
+                resultadoTotal = Float.parseFloat(Operacion.Calcular(resultadoTotal, elementoActualDeLaLista));
+            }
+            else{
+                Peticion.error = true;
+                Peticion.mensaje_error = "Algún operando no cumplió con la validación correspondiente.";
+                return Peticion;
+            }
         }
         Peticion.resultado = String.valueOf(resultadoTotal);
         return Peticion;

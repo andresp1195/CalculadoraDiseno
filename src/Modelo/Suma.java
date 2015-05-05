@@ -6,9 +6,6 @@
 package Modelo;
 
 import calculadoradiseño.IOperacion;
-import calculadoradiseño.DTO;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  *
@@ -22,6 +19,11 @@ public class Suma implements IOperacion {
         float resultado = (sumando1+sumando2);
         String resultadoConvertido = String.valueOf(resultado);
         return resultadoConvertido;        
+    }
+
+    @Override
+    public boolean Validar(float x, float y) {
+        return true;
     }
 }
 

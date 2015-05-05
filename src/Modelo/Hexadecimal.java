@@ -19,4 +19,14 @@ public class Hexadecimal implements IConversion{
         String hexadecimal = Integer.toHexString(decimal);
         return hexadecimal; 
     }
+
+    @Override
+    public boolean Validar(int x) {
+        if (x < 0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 }

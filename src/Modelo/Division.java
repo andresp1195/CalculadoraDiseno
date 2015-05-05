@@ -5,7 +5,6 @@
  */
 package Modelo;
 import calculadoradiseño.IOperacion;
-import java.util.List;
 /**
  *
  * @author Mauricio Gamboa
@@ -20,5 +19,14 @@ public class Division implements IOperacion{
             String resultadoConvertido = String.valueOf(resultado);
             return resultadoConvertido;}
 //        return "true";
+
+    @Override
+    public boolean Validar(float x, float y) {
+        if (y==0){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
-//}
+}

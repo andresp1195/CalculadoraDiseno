@@ -5,8 +5,6 @@
  */
 package Modelo;
 import calculadoradiseño.IOperacion;
-import java.lang.Math.*;
-import java.util.List;
 /**
  *
  * @author Mauricio Gamboa
@@ -20,5 +18,15 @@ import java.util.List;
             String resultadoConvertido = String.valueOf(resultado);   
             return resultadoConvertido;
         }
+
+    @Override
+    public boolean Validar(float x, float y) {
+        if (y < 1){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
+}
     

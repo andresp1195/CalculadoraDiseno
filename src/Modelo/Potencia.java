@@ -6,10 +6,6 @@
 package Modelo;
 
 import calculadoradiseño.IOperacion;
-import java.util.LinkedList;
-import java.util.List;
-import java.lang.Math.*;
-import Modelo.Multiplicacion;
 /**
  *
  * @author Mauricio Gamboa
@@ -22,5 +18,15 @@ public class Potencia implements IOperacion {
         double resultado = (Math.pow(base,exponente));
         String resultadoConvertido = String.valueOf(resultado); 
         return resultadoConvertido;
+    }
+
+    @Override
+    public boolean Validar(float x, float y) {
+        if ((x==0) && (y==0)){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 } 

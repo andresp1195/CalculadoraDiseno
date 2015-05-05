@@ -6,7 +6,6 @@ package calculadoradiseño;
  * and open the template in the editor.
  */
 
-import java.util.LinkedList;
 import java.util.List;
 /**
  *
@@ -28,11 +27,4 @@ public class DTO {
         this.mensaje_error=mensaje_error; 
         this.tipo=tipo;
     }
-    
-    //lista.add(numero);
-    //lista.get(i);
-    //lista.clear();
-    //lista.size(); 
-        
-    
 }

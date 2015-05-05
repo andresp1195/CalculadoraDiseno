@@ -18,4 +18,14 @@ public class Octal implements IConversion{
          String octal = Integer.toOctalString(numero);
          return octal;
     }
+
+    @Override
+    public boolean Validar(int x) {
+        if (x < 0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 }

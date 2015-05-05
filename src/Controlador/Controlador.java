@@ -4,14 +4,9 @@
  * and open the template in the editor.
  */
 package Controlador;
-import calculadoradiseño.IOperacion;
 import calculadoradiseño.DTO;
-import calculadoradiseño.*; 
-import Modelo.*; 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,8 +34,9 @@ public class Controlador {
             return (DTO) efectuar.invoke(InstanciaCreador, MiDTO, (asignar.invoke(InstanciaCreador, MiDTO)));
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(new JFrame(), "Problema en la obtención del nombre de la operación.");
-            return null;
+            MiDTO.error = true;
+            MiDTO.mensaje_error = "Problema en la obtención del nombre de la operación.";
+            return MiDTO;
         }
     }
     

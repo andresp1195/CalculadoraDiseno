@@ -6,8 +6,6 @@
 package Modelo;
 
 import calculadoradiseño.IOperacion;
-import calculadoradiseño.DTO;
-import java.util.List;
 
 /**
  *
@@ -22,5 +20,10 @@ public class Resta implements IOperacion {
         float resultado = (minuendo-sustraendo);
         String resultadoConvertido = String.valueOf(resultado);    
         return resultadoConvertido;
-    } 
+    }
+    @Override
+    public boolean Validar(float x, float y) {
+        return true;
+    }
+    
 }

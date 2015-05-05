@@ -18,4 +18,14 @@ public class Binario implements IConversion{
         String binario = Integer.toBinaryString(decimal);
         return binario; 
     }
+
+    @Override
+    public boolean Validar(int x) {
+        if (x < 0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 }

@@ -5,7 +5,6 @@
  */
 package Modelo;
 import calculadoradiseño.IOperacion;
-import java.util.List;
 /**
  *
  * @author Mauricio Gamboa
@@ -18,5 +17,10 @@ public class Multiplicacion implements IOperacion{
         float resultado = (factor1*factor2);
         String resultadoConvertido = String.valueOf(resultado);  
         return resultadoConvertido;
+    }
+
+    @Override
+    public boolean Validar(float x, float y) {
+        return true;
     }
 }

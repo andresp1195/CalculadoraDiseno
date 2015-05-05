@@ -149,7 +149,7 @@ public class ConversionGUI extends javax.swing.JFrame implements IVistaControlad
         //get parámetros de cada text field y validarlos
         try{
             int decimalAConvertir = Integer.parseInt(FieldDecimal.getText());
-            if (decimalAConvertir > 0){
+            if (decimalAConvertir >= 0){
                 //crear el DTO que contenga la información de petición al controlador
                 List <Integer> listaOperandos = new LinkedList();
                 listaOperandos.add(decimalAConvertir);
@@ -228,7 +228,13 @@ public class ConversionGUI extends javax.swing.JFrame implements IVistaControlad
         Controlador controlador;
         try {
             controlador = new Controlador();
-            LabelResultadoString.setText(controlador.enviar_solicitud(solicitud).resultado);
+            DTO respuesta = controlador.enviar_solicitud(solicitud);
+            if (respuesta.error == true){
+                JOptionPane.showMessageDialog(new JFrame(),respuesta.mensaje_error,"Error",JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+                LabelResultadoString.setText(respuesta.resultado);
+            }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(OperacionGUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
