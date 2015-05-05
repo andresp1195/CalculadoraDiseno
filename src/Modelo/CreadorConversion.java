@@ -34,14 +34,12 @@ public class CreadorConversion {
          }
     }
     public static DTO Efectuar(DTO Peticion, IConversion Conversion){
-        System.out.println("En efectuar: Conversion = "+Conversion);
-        int resultadoTotal;
+        String resultadoTotal = "";
         int elementoActualDeLaLista;
-        int tamano = Peticion.lista.size();
-        resultadoTotal = Peticion.lista.get(0);        
-        for (int i=1;i<tamano;i++){            
+        int tamano = Peticion.lista.size();    
+        for (int i=0;i<tamano;i++){            
             elementoActualDeLaLista = Peticion.lista.get(i);
-            resultadoTotal = Integer.parseInt(Conversion.Convertir(elementoActualDeLaLista));
+            resultadoTotal = Conversion.Convertir(elementoActualDeLaLista);
         }
         Peticion.resultado = String.valueOf(resultadoTotal);
         return Peticion;

@@ -39,12 +39,9 @@ public class Controlador {
             return (DTO) efectuar.invoke(InstanciaCreador, MiDTO, (asignar.invoke(InstanciaCreador, MiDTO)));
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(new JFrame(), "Problema con la obtención del nombre de la operación.");
+            JOptionPane.showMessageDialog(new JFrame(), "Problema en la obtención del nombre de la operación.");
+            return null;
         }
-        //IOperacion operacion = Creador.AsignarOperacion(MiDTO);
-        
-        //return Creador.EfectuarOperacion(MiDTO, operacion);
-        return null;
     }
     
 }

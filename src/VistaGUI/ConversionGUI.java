@@ -157,11 +157,11 @@ public class ConversionGUI extends javax.swing.JFrame implements IVistaControlad
                 EnviarSolicitud(peticion);
             }
             else{
-                JOptionPane.showMessageDialog(new JFrame(),"El número que ingresó no es un decimal válido (de ceros y unos, únicamente).","Error",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(new JFrame(),"El número que ingresó no es un decimal válido.","Error",JOptionPane.ERROR_MESSAGE);
             }
         }
         catch (Exception e){
-            JOptionPane.showMessageDialog(new JFrame(),"Debe ingresar los datos requeridos (Decimal a Convertir) para continuar.\nLos datos deben ser números (0 y 1, únicamente).","Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame(),"Debe ingresar los datos requeridos (Decimal a Convertir) para continuar.","Error",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_BotonCalcularActionPerformed
 

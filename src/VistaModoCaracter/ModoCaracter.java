@@ -126,8 +126,8 @@ public class ModoCaracter implements IVistaControlador {
         Controlador controlador;
         try {
             controlador = new Controlador();
-            controlador.enviar_solicitud(solicitud);
-            System.out.println("--> Resultado: "+controlador..resultado);
+            DTO dtoRespuesta = controlador.enviar_solicitud(solicitud);
+            System.out.println("--> Resultado: "+dtoRespuesta.resultado);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ModoCaracter.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
