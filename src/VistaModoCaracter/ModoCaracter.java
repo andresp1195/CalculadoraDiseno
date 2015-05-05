@@ -124,7 +124,7 @@ public class ModoCaracter {
         String resultado= enviar.MiDTO.resultado;  
         System.out.println("Resultado: "+resultado);
     } 
-    else { 
+    else {         
         System.out.println("Operacion a realizar: "+operacion.Nombre);
         DTO enviar= new DTO((solicitar_numeros(1)),operacion.Nombre,"0",false,""); 
         Controlador peticion = new Controlador(enviar);

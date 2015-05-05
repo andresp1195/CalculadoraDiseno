@@ -11,21 +11,18 @@ import calculadoradiseño.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
-
 /**
  *
  * @author Andres
  */
-public class Creador { //ShapeFactory
+public class CreadorConversion {
     public DTO MiDTO;
-    public Creador(DTO MiDTO){
+    public CreadorConversion(DTO MiDTO){
         this.MiDTO=MiDTO;
-    }
-    
-    
-    public static IOperacion AsignarOperacion(DTO Peticion) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{
+}
+    public static IConversion Asignar(DTO Peticion) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{
         Class ClaseAsignada = Class.forName("Modelo."+Peticion.operacion);          
-        Method MetodoDeseado = ClaseAsignada.getMethod("Calcular",new Class[]{float.class,float.class});        
+        //Method MetodoDeseado = ClaseAsignada.getMethod("Convertir",new Class[]{int.class});        
         //Object InstanciaAsignada = ClaseAsignada.getConstructor(new Class[]{}).newInstance(new Object[] {});
         Object InstanciaAsignada = ClaseAsignada.getConstructor().newInstance();
         /*
@@ -35,12 +32,12 @@ public class Creador { //ShapeFactory
         resultadoTotal = Peticion.lista.get(0);
         */
          try{
-            IOperacion operacion = (IOperacion) InstanciaAsignada;
+            IConversion conversion = (IConversion) InstanciaAsignada;
             /*for (int i=1;i<tamano;i++){            
                 elementoActualDeLaLista = Peticion.lista.get(i);
                 resultadoTotal = Float.parseFloat(operacion.Calcular(resultadoTotal, elementoActualDeLaLista));
             }*/
-            return operacion;
+            return conversion;
          }
          catch(Exception e){
              return null;
@@ -48,18 +45,20 @@ public class Creador { //ShapeFactory
          
         //return null;
     }
-    public static DTO EfectuarOperacion(DTO Peticion, IOperacion Operacion){
-        float resultadoTotal;
-        float elementoActualDeLaLista;
+    public static DTO Efectuar(DTO Peticion, IConversion Conversion){
+        int resultadoTotal;
+        int elementoActualDeLaLista;
         int tamano = Peticion.lista.size();
-        resultadoTotal = Peticion.lista.get(0);
-        
+        resultadoTotal = Peticion.lista.get(0);        
         for (int i=1;i<tamano;i++){            
             elementoActualDeLaLista = Peticion.lista.get(i);
-            resultadoTotal = Float.parseFloat(Operacion.Calcular(resultadoTotal, elementoActualDeLaLista));
+            resultadoTotal = Integer.parseInt(Conversion.Convertir(elementoActualDeLaLista));
         }
-        
+                
         Peticion.resultado = String.valueOf(resultadoTotal);
         return Peticion;
     }
+
+
+
 }

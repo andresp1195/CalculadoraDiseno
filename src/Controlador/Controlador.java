@@ -24,18 +24,8 @@ public class Controlador {
     }
     
     public static DTO enviar_solicitud(DTO MiDTO) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{
-        
-        IOperacion operacion = Creador.AsignarOperacion(MiDTO);
-        
-        return Creador.EfectuarOperacion(MiDTO, operacion);
-        
-        
-    }
-    
-//    public void main(String[] args){
-//        Creador m = new Creador();
-//        IOperacion operacion1 = Creador.AsignarOperacion(MiDTO);
-//        operacion1.Creador(MiDTO);
-//        
-//    }
+        Class ClaseAsignada = Class.forName("calculadoradiseño.I"+MiDTO.tipo);
+        Object InstanciaAsignada = ClaseAsignada.getConstructor().newInstance();
+        return null;
+    }    
 }

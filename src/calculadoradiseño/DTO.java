@@ -17,14 +17,16 @@ public class DTO {
     public String operacion; 
     public String resultado; 
     public boolean error; 
-    public String mensaje_error; 
+    public String mensaje_error;
+    public String tipo;
     
-    public DTO(List<Integer> lista, String operacion, String resultado, boolean error, String mensaje_error){
+    public DTO(List<Integer> lista, String operacion, String resultado, boolean error, String mensaje_error, String tipo){
         this.lista=lista; 
         this.operacion=operacion; 
         this.resultado=resultado; 
         this.error=error; 
         this.mensaje_error=mensaje_error; 
+        this.tipo=tipo;
     }
     
     //lista.add(numero);
