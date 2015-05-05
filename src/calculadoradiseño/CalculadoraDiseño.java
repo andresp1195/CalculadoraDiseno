@@ -12,6 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.lang.Math.*;
 import Modelo.Multiplicacion;
+import java.lang.reflect.InvocationTargetException;
 /**
  *
  * @author Andres
@@ -21,7 +22,7 @@ public class CalculadoraDiseño {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException {
         // TODO code application logic here
         ModoCaracter mc= new ModoCaracter();
         mc.operar(); 

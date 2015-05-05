@@ -13,6 +13,7 @@ import VistaModoCaracter.*;
 import java.util.Arrays; 
 import java.util.Scanner; 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -105,7 +106,7 @@ public class ModoCaracter {
         
     }
     
-    public void operar() throws ClassNotFoundException, InstantiationException, IllegalAccessException{ 
+    public void operar() throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{ 
     cargar_operaciones(lista); 
     do {
     do { 

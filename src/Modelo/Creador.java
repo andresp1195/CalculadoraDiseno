@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import calculadoradiseño.IOperacion;
 import Controlador.Controlador;
 import calculadoradiseño.*;
 import java.lang.reflect.InvocationTargetException;
@@ -21,11 +22,36 @@ public class Creador { //ShapeFactory
         this.MiDTO=MiDTO;
     }
     
-    public static IOperacion AsignarOperacion(DTO operacionSeleccionada) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{
-        Class ClaseAsignada = Class.forName("Modelo."+operacionSeleccionada.operacion);          
-        Method MetodoDeseado = ClaseAsignada.getMethod("Creador",new Class[]{DTO.class});
-        Object InstanciaAsignada = ClaseAsignada.getConstructor(new Class[]{DTO.class}).newInstance(new Object[] {operacionSeleccionada});
-        //MetodoDeseado.invoke(InstanciaAsignada,operacionSeleccionada);
+    
+    public static IOperacion AsignarOperacion(DTO Peticion) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{
+         int resultadoTotal;
+         int elementoActualDeLaLista;
+         int tamano = Peticion.lista.size();
+         resultadoTotal = Peticion.lista.get(0);
+        Class ClaseAsignada = Class.forName("Modelo."+Peticion.operacion);          
+        Method MetodoDeseado = ClaseAsignada.getMethod("Calcular",new Class[]{int.class,int.class});
+        //FUNCIONA con constructor de resta(int,int) y calcular(int,int) dentro de el
+        //Object InstanciaAsignada = ClaseAsignada.getConstructor(new Class[]{int.class,int.class}).newInstance(new Object[] {2,4});
+        //COMO CHIMY LE GUSTARIA
+        Object InstanciaAsignada = ClaseAsignada.getConstructor(new Class[]{}).newInstance(new Object[] {});
+        
+        //eObject InstanciaAsignada = ClaseAsignada.getConstructor(new Class[]{}).newInstance(new Object[] {Peticion});
+         for (int i=1;i<tamano;i++){            
+            elementoActualDeLaLista = Peticion.lista.get(i);
+            resultadoTotal = Integer.parseInt(MetodoDeseado.invoke(InstanciaAsignada,new Object[]{resultadoTotal,elementoActualDeLaLista}).toString());
+            //System.out.println("Resultado Total = "+resultadoTotal);
+            //MetodoDeseado.invoke(InstanciaAsignada,2,elementoActualDeLaLista);
+         }
+         
+        
+        
+//        Este es el reflection que vamos a utilizar
+        
+        
+
+
+
+//MetodoDeseado.invoke(InstanciaAsignada,operacionSeleccionada);
     //Metodo que prueba Reflection.
         
         //Object result = Creador.invoke(operacionSeleccionada.operacion,operacionSeleccionada);

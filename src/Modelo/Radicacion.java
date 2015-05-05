@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Modelo;
+import calculadoradiseño.IOperacion;
 import java.lang.Math.*;
 import java.util.List;
 /**

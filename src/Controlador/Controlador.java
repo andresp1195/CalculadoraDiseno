@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Controlador;
+import calculadoradiseño.IOperacion;
 import calculadoradiseño.*; 
 import Modelo.*; 
 import java.lang.reflect.InvocationTargetException;

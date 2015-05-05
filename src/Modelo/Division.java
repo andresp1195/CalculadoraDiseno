@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import calculadoradiseño.IOperacion;
 import java.util.List;
 
 /**
