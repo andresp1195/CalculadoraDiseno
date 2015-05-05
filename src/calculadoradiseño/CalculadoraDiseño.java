@@ -24,8 +24,15 @@ public class CalculadoraDiseño {
      */
     public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException {
         // TODO code application logic here
-        ModoCaracter mc= new ModoCaracter();
-        mc.operar(); 
+        
+        //VISTA MODO CARACTER
+        //ModoCaracter mc= new ModoCaracter();
+        //mc.operar(); 
+        
+        //VISTA GUI
+        VistaGUI.VentanaPrincipalGUI ventanaPrincipal = new VistaGUI.VentanaPrincipalGUI();
+        ventanaPrincipal.setVisible(true);
+        
          // TODO code application logic here
 //        List<Integer> operandos = new LinkedList();
 //        operandos.add(2);

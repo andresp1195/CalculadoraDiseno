@@ -5,7 +5,7 @@
  */
 package VistaGUI;
 import Controlador.Controlador;
-import Controlador.IVistaControlador;
+import calculadoradiseño.IVistaControlador;
 import VistaGUI.VentanaPrincipalGUI;
 import calculadoradiseño.DTO;
 //import calculadoradiseño.DTO;
@@ -115,9 +115,9 @@ public class OperacionGUI extends javax.swing.JFrame implements IVistaControlado
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelResultado)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelResultadoInt, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(LabelResultadoInt, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(BotonCalcular))))
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -6,6 +6,7 @@
 package VistaModoCaracter;
 
 import calculadoradiseño.*; 
+import calculadoradiseño.DTO;
 import Controlador.*; 
 import VistaModoCaracter.*; 
 
