@@ -15,11 +15,11 @@ import java.util.List;
  * @author Mauricio Gamboa
  */
 public class Suma implements IOperacion {    
-//    public Suma(){ 
-//    }
+    public float sumando1;
+    public float sumando2;
     @Override
-    public String Calcular (int sumando1, int sumando2){
-        int resultado = (sumando1+sumando2);
+    public String Calcular (float sumando1, float sumando2){
+        float resultado = (sumando1+sumando2);
         String resultadoConvertido = String.valueOf(resultado);
         return resultadoConvertido;        
     }

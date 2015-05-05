@@ -4,30 +4,21 @@
  * and open the template in the editor.
  */
 package Modelo;
-
 import calculadoradiseño.IOperacion;
 import java.util.List;
-
 /**
  *
  * @author Mauricio Gamboa
  */
 public class Division implements IOperacion{
-    int elementoActualDeLaLista;
-    float cociente;
-    public Division(){
-        //Creador(MiDTO.lista);
-    }
+    public float divisor;
+    public float dividendo;    
     @Override
-    public void Creador(List <Integer> listaDeOperandos){
-        int tamano = listaDeOperandos.size(); 
-        cociente = (float)listaDeOperandos.get(0);
-        for (int i=1;i<tamano;i++){
-            elementoActualDeLaLista = listaDeOperandos.get(i); 
-            cociente = CocienteResultado(cociente,elementoActualDeLaLista);
-        }
-    System.out.println(cociente);}
-    public float CocienteResultado(float dividendo,int divisor){
-        return (dividendo/divisor);
+    public String Calcular(float dividendo,float divisor){
+        while (divisor!=0){
+            float resultado = (dividendo/divisor);
+            String resultadoConvertido = String.valueOf(resultado);
+            return resultadoConvertido;}
+        return "true";
     }
 }

@@ -14,18 +14,13 @@ import java.util.List;
  * @author Mauricio Gamboa
  */
 public class Resta implements IOperacion {
-//    int restaTotal;
-//    int elementoActualDeLaLista;
-    //public DTO MiDTO;
-    public int minuendo;
-    public int sustraendo;
-//    public Resta(){   
-//    }   
+
+    public float minuendo;
+    public float sustraendo;
     @Override    
-    public String Calcular (int minuendo, int sustraendo){
-        int resultado = (minuendo-sustraendo);
+    public String Calcular (float minuendo, float sustraendo){
+        float resultado = (minuendo-sustraendo);
         String resultadoConvertido = String.valueOf(resultado);        
         return resultadoConvertido;
     } 
-
 }

@@ -6,26 +6,17 @@
 package Modelo;
 import calculadoradiseño.IOperacion;
 import java.util.List;
-
 /**
  *
  * @author Mauricio Gamboa
  */
-public class Multiplicacion implements IOperacion{
-    int elementoActualDeLaLista;
-    int producto=1;
-    public Multiplicacion(){
-        //Creador(operandos.lista);
-    }
-    @Override
-    public void Creador(List<Integer> listaDeOperandos){
-        int tamano = listaDeOperandos.size();
-        for (int i=0;i<tamano;i++){
-            elementoActualDeLaLista = listaDeOperandos.get(i);
-            producto = ResultadoDeLaMultiplicacion(producto,elementoActualDeLaLista);
-        }
-    }
-    public int ResultadoDeLaMultiplicacion (int factor1, int factor2){
-        return (factor1*factor2);
+public class Multiplicacion implements IOperacion{   
+    public float factor1;
+    public float factor2;
+    @Override    
+    public String Calcular (float factor1, float factor2){
+        float resultado = (factor1*factor2);
+        String resultadoConvertido = String.valueOf(resultado);        
+        return resultadoConvertido;
     }
 }
