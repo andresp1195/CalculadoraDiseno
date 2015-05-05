@@ -1,7 +1,5 @@
 package VistaModoCaracter;
 
-import java.util.LinkedList;
-import java.util.List;
 /**
  *
  * @author Mauricio Gamboa

@@ -1,13 +1,9 @@
 package VistaModoCaracter;
 
-import calculadoradiseño.*; 
 import calculadoradiseño.DTO;
 import Controlador.*; 
-import VistaModoCaracter.*; 
 import calculadoradiseño.IVistaControlador;
-import java.util.Arrays; 
 import java.util.Scanner; 
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
@@ -129,7 +125,12 @@ public class ModoCaracter implements IVistaControlador {
         try {
             controlador = new Controlador();
             DTO dtoRespuesta = controlador.enviar_solicitud(solicitud);
-            System.out.println("--> Resultado: "+dtoRespuesta.resultado);
+            if (dtoRespuesta.error){
+                System.out.println("Error del sistema: "+dtoRespuesta.mensaje_error);
+            }
+            else{
+                System.out.println("--> Resultado: "+dtoRespuesta.resultado);
+            }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ModoCaracter.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
