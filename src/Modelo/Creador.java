@@ -35,7 +35,6 @@ public class Creador { //ShapeFactory
         //COMO CHIMY LE GUSTARIA
         Object InstanciaAsignada = ClaseAsignada.getConstructor(new Class[]{}).newInstance(new Object[] {});
         
-        //eObject InstanciaAsignada = ClaseAsignada.getConstructor(new Class[]{}).newInstance(new Object[] {Peticion});
          for (int i=1;i<tamano;i++){            
             elementoActualDeLaLista = Peticion.lista.get(i);
             resultadoTotal = Integer.parseInt(MetodoDeseado.invoke(InstanciaAsignada,new Object[]{resultadoTotal,elementoActualDeLaLista}).toString());
