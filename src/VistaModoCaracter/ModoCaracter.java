@@ -5,8 +5,6 @@ import calculadoradiseño.DTO;
 import Controlador.*; 
 import VistaModoCaracter.*; 
 import calculadoradiseño.IVistaControlador;
-
-
 import java.util.Arrays; 
 import java.util.Scanner; 
 import java.io.IOException;
@@ -26,26 +24,27 @@ public class ModoCaracter implements IVistaControlador {
     Scanner buffer = new Scanner(System.in); 
     public List<OperacionesSistema> lista = new LinkedList <OperacionesSistema>(); 
     
+    //Carga las operaciones de la calculadora al sistema. 
     public void cargar_operaciones(List<OperacionesSistema> listaos){
         this.lista=listaos; 
          
-        OperacionesSistema operacion1 = new OperacionesSistema("Suma",lista.size()+1,"operacion");
+        OperacionesSistema operacion1 = new OperacionesSistema("Suma",lista.size()+1,"Operacion");
         lista.add(operacion1);
-        OperacionesSistema operacion2 = new OperacionesSistema("Resta",lista.size()+1,"operacion");
+        OperacionesSistema operacion2 = new OperacionesSistema("Resta",lista.size()+1,"Operacion");
         lista.add(operacion2);
-        OperacionesSistema operacion3 = new OperacionesSistema("Multiplicacion",lista.size()+1,"operacion");
+        OperacionesSistema operacion3 = new OperacionesSistema("Multiplicacion",lista.size()+1,"Operacion");
         lista.add(operacion3);
-        OperacionesSistema operacion4 = new OperacionesSistema("Division",lista.size()+1,"operacion"); 
+        OperacionesSistema operacion4 = new OperacionesSistema("Division",lista.size()+1,"Operacion"); 
         lista.add(operacion4);
-        OperacionesSistema operacion5 = new OperacionesSistema("Potencia",lista.size()+1,"operacion");
+        OperacionesSistema operacion5 = new OperacionesSistema("Potencia",lista.size()+1,"Operacion");
         lista.add(operacion5);
-        OperacionesSistema operacion6 = new OperacionesSistema("Radicacion",lista.size()+1,"operacion"); 
+        OperacionesSistema operacion6 = new OperacionesSistema("Radicacion",lista.size()+1,"Operacion"); 
         lista.add(operacion6);
-        OperacionesSistema operacion7 = new OperacionesSistema("Binario",lista.size()+1,"conversion"); 
+        OperacionesSistema operacion7 = new OperacionesSistema("Binario",lista.size()+1,"Conversion"); 
         lista.add(operacion7);
-        OperacionesSistema operacion8 = new OperacionesSistema("Hexadecimal",lista.size()+1,"conversion"); 
+        OperacionesSistema operacion8 = new OperacionesSistema("Hexadecimal",lista.size()+1,"Conversion"); 
         lista.add(operacion8);
-        OperacionesSistema operacion9 = new OperacionesSistema("Octal",lista.size()+1,"conversion");
+        OperacionesSistema operacion9 = new OperacionesSistema("Octal",lista.size()+1,"Conversion");
         lista.add(operacion9);
     }
     
@@ -54,20 +53,20 @@ public class ModoCaracter implements IVistaControlador {
         List<OperacionesSistema> Lista_Operaciones= this.lista; 
         int tamano_lista= Lista_Operaciones.size();
         int contador=0;
-        OperacionesSistema res;
-        res= Lista_Operaciones.get(0);
+        OperacionesSistema operacion;
+        operacion= Lista_Operaciones.get(0);
         if (tamano_lista>1){
         while (contador<tamano_lista){
             if ((Lista_Operaciones.get(contador).ID)==Id){
-                res=Lista_Operaciones.get(contador);
-                return res; 
+                operacion=Lista_Operaciones.get(contador);
+                return operacion; 
             }
             else{
                 contador++;
             }
         }
-        if ((res.ID)==Id){
-            return res; 
+        if ((operacion.ID)==Id){
+            return operacion; 
         }
         else{
             return null; 
@@ -75,9 +74,9 @@ public class ModoCaracter implements IVistaControlador {
         }
         else{
             if (tamano_lista==1){ 
-                if ((res.ID)==Id){ 
-                res=Lista_Operaciones.get(0);
-                return res; 
+                if ((operacion.ID)==Id){ 
+                operacion=Lista_Operaciones.get(0);
+                return operacion; 
                 }
                 else{
                     return null; 
@@ -101,28 +100,31 @@ public class ModoCaracter implements IVistaControlador {
             System.out.println("Ingrese una opción válida."); 
         } 
     } while (operacion.ID > lista.size() || operacion.ID < 1);   
-    if ((operacion.Tipo.equalsIgnoreCase("conversion"))&&!(operacion.Nombre.equalsIgnoreCase("radicacion"))) { 
+    if ((operacion.Tipo.equalsIgnoreCase("operacion"))&&!(operacion.Nombre.equalsIgnoreCase("radicacion"))) { 
         System.out.println("--> Operacion a realizar: "+operacion.Nombre);
         DTO peticion= new DTO((solicitar_numeros(2)),operacion.Nombre,"0",false,"",operacion.Tipo);         
         EnviarSolicitud(peticion);
     } 
+    else if ((operacion.Nombre.equalsIgnoreCase("radicacion"))) { 
+        System.out.println("--> Operacion a realizar: "+operacion.Nombre);
+        List<Integer> lista = solicitar_numeros(1); 
+        lista.add(2);
+        DTO peticion= new DTO(lista,operacion.Nombre,"0",false,"",operacion.Tipo);         
+        EnviarSolicitud(peticion);
+    }
     else { 
         System.out.println("--> Operacion a realizar: "+operacion.Nombre);
         DTO peticion= new DTO((solicitar_numeros(1)),operacion.Nombre,"0",false,"",operacion.Tipo); 
         EnviarSolicitud(peticion);
-        
-        
     } 
-    
-    System.out.println("--> Ingrese '1' para realizar otra operacion o '2' si desea cerrar el programa."); 
+    System.out.println("Ingrese '1' para realizar otra operacion o cualquier tecla para salir del sistema."); 
     //operacion.ID=0;
     decision = buffer.nextInt(); 
     } while (decision == 1); 
     }
-
+    
     @Override
     public void EnviarSolicitud(DTO solicitud) {
-        //Mostrar el resultado en pantalla
         Controlador controlador;
         try {
             controlador = new Controlador();
@@ -141,8 +143,6 @@ public class ModoCaracter implements IVistaControlador {
         } catch (InvocationTargetException ex) {
             Logger.getLogger(ModoCaracter.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-       
     }
     
    
