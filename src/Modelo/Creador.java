@@ -30,8 +30,7 @@ public class Creador { //ShapeFactory
          resultadoTotal = Peticion.lista.get(0);
         Class ClaseAsignada = Class.forName("Modelo."+Peticion.operacion);          
         Method MetodoDeseado = ClaseAsignada.getMethod("Calcular",new Class[]{int.class,int.class});
-        //FUNCIONA con constructor de resta(int,int) y calcular(int,int) dentro de el
-        //Object InstanciaAsignada = ClaseAsignada.getConstructor(new Class[]{int.class,int.class}).newInstance(new Object[] {2,4});
+        //eAsignada.getConstructor(new Class[]{int.class,int.class}).newInstance(new Object[] {2,4});
         //COMO CHIMY LE GUSTARIA
         Object InstanciaAsignada = ClaseAsignada.getConstructor(new Class[]{}).newInstance(new Object[] {});
         
