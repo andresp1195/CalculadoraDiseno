@@ -4,19 +4,24 @@
  * and open the template in the editor.
  */
 package VistaGUI;
+import Controlador.Controlador;
+import Controlador.IVistaControlador;
 import VistaGUI.VentanaPrincipalGUI;
 import calculadoradiseño.DTO;
 //import calculadoradiseño.DTO;
 import java.awt.event.WindowEvent;
+import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 /**
  *
  * @author Jespi_000
  */
-public class OperacionGUI extends javax.swing.JFrame {
+public class OperacionGUI extends javax.swing.JFrame implements IVistaControlador{
     public String operacion;
     /**
      * Creates new form OperacionGUI
@@ -143,6 +148,7 @@ public class OperacionGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void BotonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCalcularActionPerformed
         //get parámetros de cada text field y validarlos
         try{
@@ -153,10 +159,8 @@ public class OperacionGUI extends javax.swing.JFrame {
                 List <Integer> listaOperandos = new LinkedList();
                 listaOperandos.add(op1);
                 listaOperandos.add(op2);
-                DTO enviar = new DTO(listaOperandos,this.operacion,"",false,"");
-                //JOptionPane.showMessageDialog(new JFrame(), "Crear DTO: DTO(lista,"+this.operacion+",--,false,--","Información",JOptionPane.INFORMATION_MESSAGE);
-                //enviarlo al controlador
-                //LabelResultadoInt.setText(/*Respuesta del DTO enviado como respuesta por el controlador*/);
+                DTO peticion = new DTO(listaOperandos,this.operacion,"",false,"");
+                EnviarSolicitud(peticion);
             }
             else{
                 JOptionPane.showMessageDialog(new JFrame(),"Los operandos ingresados no son números enteros positivos.","Error",JOptionPane.ERROR_MESSAGE);
@@ -227,4 +231,27 @@ public class OperacionGUI extends javax.swing.JFrame {
     private javax.swing.JLabel LabelResultado;
     private javax.swing.JLabel LabelResultadoInt;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void EnviarSolicitud(DTO solicitud) {
+        Controlador controlador = null;
+        try {
+            controlador = new Controlador(solicitud);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(OperacionGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(OperacionGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(OperacionGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchMethodException ex) {
+            Logger.getLogger(OperacionGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(OperacionGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(OperacionGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //Mostrar el resultado en pantalla
+        LabelResultadoInt.setText(controlador.MiDTO.resultado);
+    }
+
 }

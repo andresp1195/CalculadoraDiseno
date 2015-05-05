@@ -5,10 +5,12 @@
  */
 package Controlador;
 
+import calculadoradiseño.DTO;
+
 /**
  *
  * @author Mauricio Gamboa
  */
-public interface InterfaceVistaControlador {
-    
+public interface IVistaControlador {
+    public void EnviarSolicitud (DTO solicitud);
 }
