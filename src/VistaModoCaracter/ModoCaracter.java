@@ -18,6 +18,8 @@ public class ModoCaracter implements IVistaControlador {
     OperacionesSistema operacion; 
     String decision; //Decision de Salida del sistema.  "1" para continuar, cualquier otra tecla para salir. 
     Scanner buffer = new Scanner(System.in); 
+    public int cantidad_operandos=2; 
+    public int cantidad_a_convertir =1; 
     public List<OperacionesSistema> lista = new LinkedList <OperacionesSistema>(); 
     
     //Carga las operaciones de la calculadora al sistema. 
@@ -98,19 +100,19 @@ public class ModoCaracter implements IVistaControlador {
     } while (operacion.ID > lista.size() || operacion.ID < 1);   
     if ((operacion.Tipo.equalsIgnoreCase("operacion"))&&!(operacion.Nombre.equalsIgnoreCase("radicacion"))) { 
         System.out.println("--> Operacion a realizar: "+operacion.Nombre);
-        DTO peticion= new DTO((solicitar_numeros(2)),operacion.Nombre,"0",false,"",operacion.Tipo);         
+        DTO peticion= new DTO((solicitar_numeros(cantidad_operandos)),operacion.Nombre,"0",false,"",operacion.Tipo);         
         EnviarSolicitud(peticion);
     } 
     else if ((operacion.Nombre.equalsIgnoreCase("radicacion"))) { 
         System.out.println("--> Operacion a realizar: "+operacion.Nombre);
-        List<Integer> lista = solicitar_numeros(1); 
+        List<Integer> lista = solicitar_numeros(cantidad_a_convertir); 
         lista.add(2);
         DTO peticion= new DTO(lista,operacion.Nombre,"0",false,"",operacion.Tipo);         
         EnviarSolicitud(peticion);
     }
     else { 
         System.out.println("--> Operacion a realizar: "+operacion.Nombre);
-        DTO peticion= new DTO((solicitar_numeros(1)),operacion.Nombre,"0",false,"",operacion.Tipo); 
+        DTO peticion= new DTO((solicitar_numeros(cantidad_a_convertir)),operacion.Nombre,"0",false,"",operacion.Tipo); 
         EnviarSolicitud(peticion);
     } 
     System.out.println("Ingrese '1' para realizar otra operacion o cualquier número para salir del sistema."); 
