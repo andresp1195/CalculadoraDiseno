@@ -5,13 +5,12 @@
  */
 package Modelo;
 
-import calculadoradiseño.IConversion;
 
 /**
  *
  * @author Mauricio Gamboa
  */
-public class Binario implements IConversion{
+public class Binario extends Conversion{
     @Override
     public String Convertir (int decimal){
         //int numero=(int)decimal;

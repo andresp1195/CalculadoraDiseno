@@ -5,13 +5,12 @@
  */
 package Modelo;
 
-import calculadoradiseño.IConversion;
 
 /**
  *
  * @author Mauricio Gamboa
  */
-public class Octal implements IConversion{
+public class Octal extends Conversion{
      @Override
      public String Convertir (int numero){
         

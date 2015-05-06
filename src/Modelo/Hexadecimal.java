@@ -5,13 +5,12 @@
  */
 package Modelo;
 
-import calculadoradiseño.IConversion;
 
 /**
  *
  * @author Mauricio Gamboa
  */
-public class Hexadecimal implements IConversion{
+public class Hexadecimal extends Conversion{
       
     @Override
     public String Convertir (int decimal){
