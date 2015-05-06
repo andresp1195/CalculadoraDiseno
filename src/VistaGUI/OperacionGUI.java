@@ -158,10 +158,15 @@ public class OperacionGUI extends javax.swing.JFrame implements IVistaControlado
             }
             else if ((op1>=0) && (op2>=0)){
                 //crear el DTO que contenga la información de petición al controlador
-                List <Integer> listaOperandos = new LinkedList();
-                listaOperandos.add(op1);
-                listaOperandos.add(op2);
-                DTO peticion = new DTO(listaOperandos,this.operacion,"",false,"","Operacion");
+                List <Integer> parametrosOperables = new LinkedList();
+                    parametrosOperables.add(op1);
+                    parametrosOperables.add(op2);
+                List <String> parametrosNoOperables = new LinkedList();
+                    parametrosNoOperables.add(this.operacion);
+                    parametrosNoOperables.add("");
+                    parametrosNoOperables.add("");
+                    parametrosNoOperables.add("Operacion");
+                DTO peticion = new DTO(parametrosOperables,parametrosNoOperables);
                 EnviarSolicitud(peticion);
             }
             else{
@@ -241,7 +246,7 @@ public class OperacionGUI extends javax.swing.JFrame implements IVistaControlado
         try {
             controlador = new Controlador();
             DTO respuesta = controlador.enviar_solicitud(solicitud);
-            if (respuesta.error == true){
+            if (!(respuesta.mensaje_error.equals(""))){
                 JOptionPane.showMessageDialog(new JFrame(),respuesta.mensaje_error,"Error",JOptionPane.ERROR_MESSAGE);
             }
             else{

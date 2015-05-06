@@ -100,19 +100,42 @@ public class ModoCaracter implements IVistaControlador {
     } while (operacion.ID > lista.size() || operacion.ID < 1);   
     if ((operacion.Tipo.equalsIgnoreCase("operacion"))&&!(operacion.Nombre.equalsIgnoreCase("radicacion"))) { 
         System.out.println("--> Operacion a realizar: "+operacion.Nombre);
-        DTO peticion= new DTO((solicitar_numeros(cantidad_operandos)),operacion.Nombre,"0",false,"",operacion.Tipo);         
+        //Crear las listas de parámetros para crear el DTO
+        List<Integer> parametrosOperables = new LinkedList();
+            parametrosOperables = solicitar_numeros(cantidad_operandos);
+        List<String> parametrosNoOperables = new LinkedList();
+            parametrosNoOperables.add(operacion.Nombre);
+            parametrosNoOperables.add("");
+            parametrosNoOperables.add("");
+            parametrosNoOperables.add(operacion.Tipo);
+        DTO peticion = new DTO(parametrosOperables,parametrosNoOperables);         
         EnviarSolicitud(peticion);
     } 
     else if ((operacion.Nombre.equalsIgnoreCase("radicacion"))) { 
         System.out.println("--> Operacion a realizar: "+operacion.Nombre);
-        List<Integer> lista = solicitar_numeros(cantidad_a_convertir); 
-        lista.add(2);
-        DTO peticion= new DTO(lista,operacion.Nombre,"0",false,"",operacion.Tipo);         
+        
+        //Crear las listas de parámetros para crear el DTO
+        List<Integer> parametrosOperables = solicitar_numeros(cantidad_a_convertir); 
+            parametrosOperables.add(2);
+        List<String> parametrosNoOperables = new LinkedList();
+            parametrosNoOperables.add(operacion.Nombre);
+            parametrosNoOperables.add("");
+            parametrosNoOperables.add("");
+            parametrosNoOperables.add(operacion.Tipo);
+        DTO peticion = new DTO(parametrosOperables,parametrosNoOperables);         
         EnviarSolicitud(peticion);
     }
     else { 
         System.out.println("--> Operacion a realizar: "+operacion.Nombre);
-        DTO peticion= new DTO((solicitar_numeros(cantidad_a_convertir)),operacion.Nombre,"0",false,"",operacion.Tipo); 
+        //Crear las listas de parámetros para crear el DTO
+        List<Integer> parametrosOperables = solicitar_numeros(cantidad_a_convertir); 
+            parametrosOperables.add(2);
+        List<String> parametrosNoOperables = new LinkedList();
+            parametrosNoOperables.add(operacion.Nombre);
+            parametrosNoOperables.add("");
+            parametrosNoOperables.add("");
+            parametrosNoOperables.add(operacion.Tipo);
+        DTO peticion = new DTO(parametrosOperables,parametrosNoOperables);  
         EnviarSolicitud(peticion);
     } 
     System.out.println("Ingrese '1' para realizar otra operacion o cualquier número para salir del sistema."); 
@@ -128,7 +151,7 @@ public class ModoCaracter implements IVistaControlador {
         try {
             controlador = new Controlador();
             DTO dtoRespuesta = controlador.enviar_solicitud(solicitud);
-            if (dtoRespuesta.error){
+            if (!(dtoRespuesta.mensaje_error.equals(""))){
                 System.out.println("Error del sistema: "+dtoRespuesta.mensaje_error);
             }
             else{

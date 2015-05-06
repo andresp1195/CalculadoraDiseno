@@ -151,9 +151,14 @@ public class ConversionGUI extends javax.swing.JFrame implements IVistaControlad
             int decimalAConvertir = Integer.parseInt(FieldDecimal.getText());
             if (decimalAConvertir >= 0){
                 //crear el DTO que contenga la información de petición al controlador
-                List <Integer> listaOperandos = new LinkedList();
-                listaOperandos.add(decimalAConvertir);
-                DTO peticion = new DTO(listaOperandos,this.conversion,"",false,"","Conversion");
+                List <Integer> parametrosOperables = new LinkedList();
+                    parametrosOperables.add(decimalAConvertir);
+                List <String> parametrosNoOperables = new LinkedList();
+                    parametrosNoOperables.add(this.conversion);
+                    parametrosNoOperables.add("");
+                    parametrosNoOperables.add("");
+                    parametrosNoOperables.add("Conversion");
+                DTO peticion = new DTO(parametrosOperables,parametrosNoOperables);
                 EnviarSolicitud(peticion);
             }
             else{
@@ -229,7 +234,7 @@ public class ConversionGUI extends javax.swing.JFrame implements IVistaControlad
         try {
             controlador = new Controlador();
             DTO respuesta = controlador.enviar_solicitud(solicitud);
-            if (respuesta.error == true){
+            if (!(respuesta.mensaje_error.equals(""))){
                 JOptionPane.showMessageDialog(new JFrame(),respuesta.mensaje_error,"Error",JOptionPane.ERROR_MESSAGE);
             }
             else{

@@ -6,6 +6,7 @@ package calculadoradiseño;
  * and open the template in the editor.
  */
 
+import java.util.LinkedList;
 import java.util.List;
 /**
  *
@@ -15,16 +16,17 @@ public class DTO {
     public List<Integer> lista; 
     public String operacion; 
     public String resultado; 
-    public boolean error; 
+    public String error; 
     public String mensaje_error;
     public String tipo;
     
-    public DTO(List<Integer> lista, String operacion, String resultado, boolean error, String mensaje_error, String tipo){
-        this.lista=lista; 
-        this.operacion=operacion; 
-        this.resultado=resultado; 
-        this.error=error; 
-        this.mensaje_error=mensaje_error; 
-        this.tipo=tipo;
+    //List<Integer> lista, String operacion, String resultado, String mensaje_error, String tipo
+    public DTO(List<Integer> parametrosOperables, List<String> parametrosNoOperables){
+        //DTO.class.getFields().length
+        this.lista=parametrosOperables; 
+        this.operacion=parametrosNoOperables.get(0); 
+        this.resultado=parametrosNoOperables.get(1);
+        this.mensaje_error=parametrosNoOperables.get(2); 
+        this.tipo=parametrosNoOperables.get(3);
     }
 }

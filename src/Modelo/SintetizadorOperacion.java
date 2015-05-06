@@ -18,7 +18,6 @@ public class SintetizadorOperacion {
         //validar que todos los parametros de la lista sean enteros positivos
         if (!(ValidarLista.Validar(Peticion.lista))){
             //Meter el error en el DTO
-            Peticion.error = true;
             Peticion.mensaje_error = "Existe un operando menor que cero.";
             return Peticion;
         }
@@ -34,7 +33,6 @@ public class SintetizadorOperacion {
                 resultadoTotal = Float.parseFloat(Operacion.Calcular(resultadoTotal, elementoActualDeLaLista));
             }
             else{
-                Peticion.error = true;
                 Peticion.mensaje_error = "Algún operando no cumplió con la validación correspondiente.";
                 return Peticion;
             }

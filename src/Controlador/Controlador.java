@@ -37,7 +37,6 @@ public class Controlador {
             return (DTO) efectuar.invoke(InstanciaCreador, MiDTO, (asignar.invoke(InstanciaCreador, MiDTO)));
         }
         catch(Exception e){
-            MiDTO.error = true;
             MiDTO.mensaje_error = "Problema en la obtención del nombre de la operación.";
             return MiDTO;
         }

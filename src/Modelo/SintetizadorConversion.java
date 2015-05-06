@@ -21,7 +21,6 @@ public class SintetizadorConversion{
         for (int i=0;i<tamano;i++){            
             elementoActualDeLaLista = Peticion.lista.get(i);
             if (!(Conversion.Validar(Peticion.lista.get(i)))){
-                Peticion.error = true;
                 Peticion.mensaje_error = "Algún operando no cumplió con la validación correspondiente.";
                 return Peticion;
             }
