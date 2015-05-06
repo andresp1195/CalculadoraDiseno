@@ -128,8 +128,7 @@ public class ModoCaracter implements IVistaControlador {
     else { 
         System.out.println("--> Operacion a realizar: "+operacion.Nombre);
         //Crear las listas de parámetros para crear el DTO
-        List<Integer> parametrosOperables = solicitar_numeros(cantidad_a_convertir); 
-            parametrosOperables.add(2);
+        List<Integer> parametrosOperables = solicitar_numeros(cantidad_a_convertir);
         List<String> parametrosNoOperables = new LinkedList();
             parametrosNoOperables.add(operacion.Nombre);
             parametrosNoOperables.add("");
