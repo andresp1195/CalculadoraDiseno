@@ -10,7 +10,7 @@ import calculadoradiseño.IOperacion;
  *
  * @author Mauricio Gamboa
  */
-public class Potencia implements IOperacion {
+public class Potencia extends Operacion {
     public float base;
     public float exponente;
     @Override       

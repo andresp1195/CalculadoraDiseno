@@ -9,7 +9,7 @@ import calculadoradiseño.IOperacion;
  *
  * @author Mauricio Gamboa
  */
-public class Division implements IOperacion{
+public class Division extends Operacion{
     public float divisor;
     public float dividendo;    
     @Override

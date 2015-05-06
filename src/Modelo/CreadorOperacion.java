@@ -6,11 +6,8 @@
 package Modelo;
 
 import calculadoradiseño.IOperacion;
-import Controlador.Controlador;
 import calculadoradiseño.*;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.List;
 
 /**
  *
@@ -35,33 +32,5 @@ public class CreadorOperacion { //ShapeFactory
          }
          
         //return null;
-    }
-    public static DTO Efectuar(DTO Peticion, IOperacion Operacion){
-        //validar que todos los parametros de la lista sean enteros positivos
-        if (!(ValidarLista.Validar(Peticion.lista))){
-            //Meter el error en el DTO
-            Peticion.error = true;
-            Peticion.mensaje_error = "Existe un operando menor que cero.";
-            return Peticion;
-        }
-        
-        float resultadoTotal;
-        float elementoActualDeLaLista;
-        int tamano = Peticion.lista.size();
-        resultadoTotal = Peticion.lista.get(0);
-        
-        for (int i=1;i<tamano;i++){            
-            elementoActualDeLaLista = Peticion.lista.get(i);
-            if (Operacion.Validar(resultadoTotal, elementoActualDeLaLista)){
-                resultadoTotal = Float.parseFloat(Operacion.Calcular(resultadoTotal, elementoActualDeLaLista));
-            }
-            else{
-                Peticion.error = true;
-                Peticion.mensaje_error = "Algún operando no cumplió con la validación correspondiente.";
-                return Peticion;
-            }
-        }
-        Peticion.resultado = String.valueOf(resultadoTotal);
-        return Peticion;
     }
 }

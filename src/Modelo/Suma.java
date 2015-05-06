@@ -11,7 +11,7 @@ import calculadoradiseño.IOperacion;
  *
  * @author Mauricio Gamboa
  */
-public class Suma implements IOperacion {    
+public class Suma extends Operacion {    
     public float sumando1;
     public float sumando2;
     @Override

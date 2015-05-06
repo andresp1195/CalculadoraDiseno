@@ -9,7 +9,7 @@ import calculadoradiseño.IOperacion;
  *
  * @author Mauricio Gamboa
  */
-    public class Radicacion implements IOperacion {
+    public class Radicacion extends Operacion {
         public float indice;
         public int subradical;
         @Override        

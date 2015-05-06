@@ -5,19 +5,16 @@
  */
 package Modelo;
 
-import calculadoradiseño.IOperacion;
-import Controlador.Controlador;
 import calculadoradiseño.*;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.List;
-/**
+/*
  *
  * @author Andres
  */
 public class CreadorConversion {
     public CreadorConversion(){
 }
+    //Factory
     public static IConversion Asignar(DTO Peticion) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{
         //Reflexión para saber cual conversión llamar
         Class ClaseAsignada = Class.forName("Modelo."+Peticion.operacion);          
@@ -31,23 +28,4 @@ public class CreadorConversion {
              return null;
          }
     }
-    public static DTO Efectuar(DTO Peticion, IConversion Conversion){
-        String resultadoTotal = "";
-        int elementoActualDeLaLista;
-        int tamano = Peticion.lista.size();    
-        for (int i=0;i<tamano;i++){            
-            elementoActualDeLaLista = Peticion.lista.get(i);
-            if (!(Conversion.Validar(Peticion.lista.get(i)))){
-                Peticion.error = true;
-                Peticion.mensaje_error = "Algún operando no cumplió con la validación correspondiente.";
-                return Peticion;
-            }
-            resultadoTotal = Conversion.Convertir(elementoActualDeLaLista);
-        }
-        Peticion.resultado = String.valueOf(resultadoTotal);
-        return Peticion;
-    }
-
-
-
 }

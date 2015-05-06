@@ -26,9 +26,12 @@ public class Controlador {
         Class ClaseCreador = Class.forName("Modelo.Creador"+MiDTO.tipo);
         Object InstanciaCreador = ClaseCreador.getConstructor().newInstance();
         
+        //Reflexión para el Sintetizador que hará las operaciones o conversiones (SintetizadorOperacion o SintetizadorConversion)
+        Class ClaseSintetizador = Class.forName("Modelo.Sintetizador"+MiDTO.tipo);
+        
         //Métodos necesarios para obtener el resultado
         Method asignar = ClaseCreador.getMethod("Asignar", DTO.class);
-        Method efectuar = ClaseCreador.getMethod("Efectuar", DTO.class, ClaseAsignada);
+        Method efectuar = ClaseSintetizador.getMethod("Efectuar", DTO.class, ClaseAsignada);
         
         try{
             return (DTO) efectuar.invoke(InstanciaCreador, MiDTO, (asignar.invoke(InstanciaCreador, MiDTO)));

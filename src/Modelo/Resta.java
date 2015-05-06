@@ -11,7 +11,7 @@ import calculadoradiseño.IOperacion;
  *
  * @author Mauricio Gamboa
  */
-public class Resta implements IOperacion {
+public class Resta extends Operacion {
 
     public float minuendo;
     public float sustraendo;

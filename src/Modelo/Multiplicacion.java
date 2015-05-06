@@ -9,7 +9,7 @@ import calculadoradiseño.IOperacion;
  *
  * @author Mauricio Gamboa
  */
-public class Multiplicacion implements IOperacion{   
+public class Multiplicacion extends Operacion{   
     public float factor1;
     public float factor2;
     @Override    
