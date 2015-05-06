@@ -5,16 +5,12 @@
  */
 package Modelo;
 
-import calculadoradiseño.IOperacion;
 
 /**
  *
  * @author Mauricio Gamboa
  */
 public class Resta extends Operacion {
-
-    public float minuendo;
-    public float sustraendo;
     @Override    
     public String Calcular (float minuendo, float sustraendo){
         float resultado = (minuendo-sustraendo);

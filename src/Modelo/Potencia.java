@@ -5,14 +5,11 @@
  */
 package Modelo;
 
-import calculadoradiseño.IOperacion;
 /**
  *
  * @author Mauricio Gamboa
  */
 public class Potencia extends Operacion {
-    public float base;
-    public float exponente;
     @Override       
     public String Calcular(float base, float exponente){       
         double resultado = (Math.pow(base,exponente));

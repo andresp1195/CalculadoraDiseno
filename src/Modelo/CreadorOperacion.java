@@ -16,8 +16,6 @@ import java.lang.reflect.InvocationTargetException;
 public class CreadorOperacion { //ShapeFactory
     public CreadorOperacion(){
     }
-    
-    
     public static IOperacion Asignar(DTO Peticion) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{
         //Reflexión para saber cual operación llamar
         Class ClaseAsignada = Class.forName("Modelo."+Peticion.operacion);          
@@ -30,7 +28,5 @@ public class CreadorOperacion { //ShapeFactory
          catch(Exception e){
              return null;
          }
-         
-        //return null;
     }
 }

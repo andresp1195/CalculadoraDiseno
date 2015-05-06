@@ -6,7 +6,6 @@ package calculadoradiseño;
  * and open the template in the editor.
  */
 
-import java.util.LinkedList;
 import java.util.List;
 /**
  *

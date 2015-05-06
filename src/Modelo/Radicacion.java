@@ -4,14 +4,11 @@
  * and open the template in the editor.
  */
 package Modelo;
-import calculadoradiseño.IOperacion;
 /**
  *
  * @author Mauricio Gamboa
  */
     public class Radicacion extends Operacion {
-        public float indice;
-        public int subradical;
         @Override        
         public String Calcular(float subradical,float indice){            
             double resultado = (Math.pow(subradical,(1/indice)));            

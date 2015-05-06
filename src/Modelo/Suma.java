@@ -5,15 +5,12 @@
  */
 package Modelo;
 
-import calculadoradiseño.IOperacion;
 
 /**
  *
  * @author Mauricio Gamboa
  */
-public class Suma extends Operacion {    
-    public float sumando1;
-    public float sumando2;
+public class Suma extends Operacion {
     @Override
     public String Calcular (float sumando1, float sumando2){
         float resultado = (sumando1+sumando2);
@@ -26,4 +23,3 @@ public class Suma extends Operacion {
         return true;
     }
 }
-

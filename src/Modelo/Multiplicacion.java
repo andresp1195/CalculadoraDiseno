@@ -4,14 +4,11 @@
  * and open the template in the editor.
  */
 package Modelo;
-import calculadoradiseño.IOperacion;
 /**
  *
  * @author Mauricio Gamboa
  */
-public class Multiplicacion extends Operacion{   
-    public float factor1;
-    public float factor2;
+public class Multiplicacion extends Operacion{  
     @Override    
     public String Calcular (float factor1, float factor2){
         float resultado = (factor1*factor2);

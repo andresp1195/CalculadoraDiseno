@@ -4,14 +4,11 @@
  * and open the template in the editor.
  */
 package Modelo;
-import calculadoradiseño.IOperacion;
 /**
  *
  * @author Mauricio Gamboa
  */
 public class Division extends Operacion{
-    public float divisor;
-    public float dividendo;    
     @Override
     public String Calcular(float dividendo,float divisor){
 //        while (divisor!=0){
